@@ -9,7 +9,7 @@ const Hero = () => {
         <div className='container'>
           <div className='row'>
             <Heading subtitle='WELCOME TO Dance-Academy' title='Best Online Dance Education Expertise' />
-            <p>Far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. -Hannah</p>
+            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
             <div className='button'>
               <button className='primary-btn'>
                 GET STARTED NOW <i className='fa fa-long-arrow-alt-right'></i>
