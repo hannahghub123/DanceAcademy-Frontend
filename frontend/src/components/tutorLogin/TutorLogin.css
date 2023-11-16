@@ -1,0 +1,3 @@
+.login-input.focused::placeholder {
+    color: transparent; /* Hide the placeholder text when input is focused */
+  }

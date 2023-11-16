@@ -1,0 +1,10 @@
+.table-container {
+    max-width: 100%;
+    overflow: auto;
+    margin-left: 250px;
+  }
+  
+  .Toastify__toast-container--top-center {
+    --toastify-toast-width: 450px;
+    --toastify-toast-height: 250px;
+  }

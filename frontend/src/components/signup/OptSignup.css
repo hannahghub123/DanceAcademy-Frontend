@@ -1,0 +1,8 @@
+.signup-btn{
+    display: flex;
+    flex-direction: row; /* Stack buttons vertically */
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
+    text-align: center;
+    margin-bottom: 100px;
+}

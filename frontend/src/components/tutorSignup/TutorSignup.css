@@ -1,0 +1,78 @@
+/* frontend/src/components/Signup.css */
+
+/* body {
+    background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Fphotos%2Fbackground&psig=AOvVaw3vzamdm69lT9C-dmaGNXPE&ust=1693295828633000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCMjti9jw_oADFQAAAAAdAAAAABAJ');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  } */
+
+
+  .trsignup-container {
+    width: 400px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    border: none;
+    outline: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
+    margin-bottom: 60px;
+  }
+  
+  .trsignup-input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: none;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .trsignup-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #fff;
+    color: #1eb2a6;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .trsignup-button:hover{
+    background-color: #1eb2a6;
+    color: white;
+  }
+
+  .tutor-link{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+  }
+
+  
+@media (max-width: 768px) {
+  /* Adjust .trsignup-container for smaller screens */
+  .trsignup-container {
+    width: 90%;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
+
+  /* Adjust .trsignup-input for smaller screens */
+  .trsignup-input {
+    padding: 10px;
+  }
+
+  /* Adjust .trsignup-button for smaller screens */
+  .trsignup-button {
+    padding: 8px;
+  }
+}
+.hideit{
+  display: none;
+}
