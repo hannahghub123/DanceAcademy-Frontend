@@ -135,7 +135,8 @@ const Header = () => {
       <header>
         <nav className='flexSB'>
           <ul className={click ? "mobile-nav" : "flexSB "} onClick={() => setClick(false)}>
-            <li className='mt-3'>
+            <li >
+              {/* className='mt-3' */}
               <Link onClick={homeSubmit}>Home</Link>
             </li>
            <li className='mt-3'>
