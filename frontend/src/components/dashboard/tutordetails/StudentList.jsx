@@ -1,42 +1,39 @@
 import React, { useEffect, useState } from 'react';
-import Stack from "@mui/joy/Stack";
-import Card from "@mui/joy/Card";
-import CardContent from "@mui/joy/CardContent";
-import Typography from "@mui/joy/Typography";
-import ImageListItem from "@mui/material/ImageListItem";
-import axiosInstance from '../../axios/stdaxios';
+import axiosInstance from '../../../axios/stdaxios';
 import { useNavigate, useParams } from 'react-router-dom';
-// import dayjs from 'dayjs';
-// import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
-// import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-// import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-// import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-// import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
-// import { DesktopDatePicker } from '@mui/x-date-pickers';
-import SessionAssign from './SessionAssign';
+import SessionAssign from './session/SessionAssign';
 import { Link } from 'react-router-dom';
-import { Button } from '@mui/material';
-import Zegocloud from '../zegocloud/Zegocloud';
-import AddActivityTask from './AddActivityTask';
+import AddActivityTask from './session/AddActivityTask';
+import Heading from '../../common/heading/Heading';
+import Back from '../../common/back/Back';
 
 
 const StudentList = () => {
 
     const [val,setVal]= useState([]);
-    const {id} = useParams();
+    
     const [timing,setTiming] = useState(false)
     const [ timingId,setTimingId] = useState(null)
     const [sessionDetails,setSessionDetails] = useState([])
     const [task,setTask] = useState(false)
     const [studentId,setStudentId] = useState(null)
     const [structId,setStructId] = useState(null)
-    const [render,setRender] = useState(false)
-    const navigate=useNavigate()
+
+    const navigate=useNavigate();
+
+    const tutorData = localStorage.getItem("tutorDetails")
+
+    const parseData = JSON.parse(tutorData)
+    const tutorId = parseData.id
+
 
     useEffect(()=>{
-        const values={
-            id:id,
-        }
+      const tutorData = localStorage.getItem("tutorDetails")
+          if (tutorData){
+              const parseData = JSON.parse(tutorData)
+              const values ={
+                  id:parseData.id
+              }
         axiosInstance.post("pay-details/",values)
         .then((res)=>{
             console.log(res.data);
@@ -48,7 +45,7 @@ const StudentList = () => {
           console.log(res.data,"session details");
           setSessionDetails(res.data)
         })
-
+      }
     },[])
 
     console.log(val,"val");
@@ -83,39 +80,28 @@ const StudentList = () => {
 
   return (
     <>
+     <Back title="Students Assigned"/>
 
-        <div className="flex justify-center mb-4">
-          <Stack spacing={2} useFlexGap>
-              <h1>Assigned Student-Course Details :</h1>
-            {val.map((item)=>(
-            <Card variant="outlined" sx={{ width: 450 }}>
-              <CardContent orientation="horizontal">
+        <section className='online ml-1'>
+            <div className="container" >
+                <Heading title='Assigned Students List'/>
 
-              <ImageListItem sx={{ width: 200 }}>
-                  <img
-                    srcSet={item.studentId.image}
-                    src={item.studentId.image}
-                    loading="lazy"
-                  />
+                <div className="content grid3" style={{height:"100%",width:"1500px"}}>
+                    {val.map((item)=>(
+                        <div className="box" style={{width:'300px', height:'500px'}}>
+                            <div className="img">
+                                <img src={item.studentId.image} alt="" />
+                            </div>
+                            <div style={{textTransform:"uppercase",marginTop:10, marginBottom:5, textTransform:"uppercase"}}> 
+                            <b>{item.studentId.name} </b> 
+                            </div>                         
+                            <div>Course - {item.structId.course.title}  </div>
+                            <div>{item.structId.title} Plan</div>
+                            <div>{item.studentId.email} </div>
+                            <div>{item.studentId.phone} </div>
 
-                </ImageListItem>
-               
-
-                <div>
-                  <Typography sx={{ overflow: "hidden" }}>
-                    Assigned Course : <span style={{ textTransform:"uppercase"}}> {item.structId.course.title} </span>
-                  </Typography>
-                  <Typography sx={{ overflow: "hidden" }}>
-                    Course-Plan : {item.structId.title}
-                    <hr />
-                  </Typography>
-                  <Typography sx={{ overflow: "hidden" }}>
-                    Student Name : {item.studentId.name}
-                    {/* <i className="fa fa-add icon ml-5" onClick={()=>taskHandle(item.studentId.id,item.structId.title)}></i> */}
-                  </Typography>
-
-                  <Typography>
-                {  sessionDetails.filter((detail)=>{
+                            <p >
+                            {  sessionDetails.filter((detail)=>{
                   return(
                     detail.student.id===item.studentId.id,
                     detail.tutor.id===item.tutorId.id,
@@ -137,10 +123,10 @@ const StudentList = () => {
 
 
                    {req.video_link?
-                   <>
+                   <div className='d-flex flex-row'>
                   <button className='session-btn' onClick={()=>mailHandle(req.video_link)}>Send Session Mail</button>
                   <i className="fa fa-add icon ml-3" onClick={()=>taskHandle(item.studentId.id,item.structId.title)} title='Add ActivityTask !'></i>
-                  </>
+                  </div>
                    :
                   null
                    }
@@ -170,40 +156,25 @@ const StudentList = () => {
                     : <button className='edit-btn' onClick={()=>timingHandle(item.id)}>Add Session Timing</button>
                   }
                 
-                  </Typography>
-            
-              
-                  
-                </div>
-              </CardContent>
-              
-              
-              {(timing && timingId && (timingId===item.id))?  
+                            </p>
+                            {(timing && timingId && (timingId===item.id))?  
                   <SessionAssign student={item.studentId.id} courseplan={item.structId.id}/>
                   :null   
                 }
-              
-            </Card>
-
-            ))}
-          </Stack>
-        </div>
-
-        {(task) ?
-        <div className='tutor-container' style={{display: 'flex',flexDirection:"row" }}>
-        <section className='team padding'>
-            <div className="container ">
-
-                <AddActivityTask studentId={studentId} coursePlan={structId} tutorId={id} setTask={setTask}/>
-                
-
+                        </div>
+                    ))}
+                </div>
             </div>
         </section>
 
-        </div>
+        {(task) ?
+
+
+                <AddActivityTask studentId={studentId} coursePlan={structId} tutorId={tutorId} setTask={setTask}/>
+                
+
         
         :null }
-      
     </>
   )
 }

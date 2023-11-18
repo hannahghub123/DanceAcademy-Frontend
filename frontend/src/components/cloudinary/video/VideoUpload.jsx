@@ -5,6 +5,7 @@ import Stack from "@mui/joy/Stack";
 import Card from "@mui/joy/Card";
 import CardContent from "@mui/joy/CardContent";
 import './Video.css';
+import toast, { Toaster } from 'react-hot-toast';
 
 const VideoUpload = (props) => {
     const [videoInput,setVideoInput] = useState(null);
@@ -23,6 +24,7 @@ const VideoUpload = (props) => {
         const formData = new FormData();
         formData.append('video',videoInput)
         formData.append('description',desc)
+        const toastid=toast.loading("Uploading..")
         
         try {
             const response = await axios.post(`http://localhost:8000/tutor/video-upload/${id}`,formData,{
@@ -37,16 +39,19 @@ const VideoUpload = (props) => {
             console.log('Video uploaded:',  response.data.url);
             setVideoInput(null);
             setDesc(null);
+            toast.dismiss(toastid)
+            toast.success("Upload Successful") 
         } catch (error) {
-            console.error("Error Uploading Video :",error)
+            console.error("Error Uploading Video :",error) 
         }
 
-        props.setRenderComponent((prev)=>!prev)
+        // props.setRenderComponent((prev)=>!prev)
     }
 
   return (
     <>
 <div className="flex justify-center mb-4">
+<Toaster />
                         <Stack spacing={2} useFlexGap>
                           <Card variant="outlined" sx={{ width: 400 }}>
                             <CardContent orientation="horizontal">

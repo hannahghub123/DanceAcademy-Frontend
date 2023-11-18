@@ -11,6 +11,8 @@ import stdEditReducer from '../features/stdEditslice';
 import admincourseEditReducer from '../features/admincourseEditSlice';
 import courseStructEditReducer from '../features/coursestructureSlice';
 import notesEditReducer from '../features/notesEditSlice';
+import taskEditReducer from '../features/taskeditSlice';
+import feedbackEditReducer from '../features/feedbackEditSlice';
 
 const store = configureStore({
     reducer: {
@@ -26,6 +28,8 @@ const store = configureStore({
       admincourseEdit : admincourseEditReducer,
       courseStructEdit : courseStructEditReducer,
       notesEdit : notesEditReducer,
+      taskEdit : taskEditReducer,
+      feedbackEdit :feedbackEditReducer,
     },
   });
 

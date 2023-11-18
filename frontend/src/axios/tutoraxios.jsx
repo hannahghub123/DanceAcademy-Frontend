@@ -3,7 +3,7 @@ import axios from "axios"
 
 const tutoraxiosInstance=axios.create(
     {
-        baseURL:"https://psykicks.social/tutor/",
+        baseURL:"http://127.0.0.1:8000/tutor/",
         headers:{
             'Content-Type':'application/json',
             // Authorization:localStorage.getItem("authToken")? "Bearer " + JSON.parse(localStorage.getItem("authToken")):null,

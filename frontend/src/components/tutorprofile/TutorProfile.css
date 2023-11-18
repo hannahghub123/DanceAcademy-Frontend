@@ -2,13 +2,13 @@
     transition: 0.5s;
   }
 
-.tutor-container{
+/* .tutor-container{
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: rgb(170, 225, 225);
-  /* margin-bottom: 10px; */
-}
+  flex-direction: row; 
+} */
 
   .tutor .image {
     position: relative;
@@ -112,6 +112,9 @@
   font-size: 16px;
 }
 
+.jc{
+  justify-content: center;
+}
 
 
 

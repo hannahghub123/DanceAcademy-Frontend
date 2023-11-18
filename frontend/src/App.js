@@ -19,9 +19,6 @@ import CourseStruct from './components/admin/dashboard/course/CourseStruct';
 import Header from './components/common/header/Header';
 import About from './components/about/About';
 import CourseHome from './components/allcourses/CourseHome';
-import Team from './components/team/Team';
-import Price from './components/pricing/Price';
-import Blog from './components/blog/Blog';
 import Contact from './components/contact/Contact';
 import Footer from './components/common/footer/Footer';
 import StdProfile from './components/stdprofile/StdProfile';
@@ -36,7 +33,12 @@ import ZegoChat from './components/zegocloud/ZegoChat';
 import CompletedActivities from './components/dashboard/studentdetails/CompletedActivities';
 import PendingActivities from './components/dashboard/studentdetails/PendingActivities';
 import TutorDashboard from './components/dashboard/TutorDashboard';
-import StudentsAssigned from './components/dashboard/tutordetails/StudentsAssigned';
+import VideoList from './components/cloudinary/video/VideoList';
+import StudentList from './components/dashboard/tutordetails/StudentList';
+import TaskAssigned from './components/dashboard/tutordetails/session/TaskAssigned';
+import StudentUploads from './components/dashboard/tutordetails/StudentUploads';
+import ScoresFeedbacks from './components/dashboard/tutordetails/feedback/ScoresFeedbacks';
+import FeedbackDetails from './components/dashboard/studentdetails/FeedbackDetails';
 
 function App() {
   const isAdminRoute = window.location.pathname.startsWith('/admin');
@@ -51,9 +53,6 @@ function App() {
       <Route path="/" element={<Home/>} />
       <Route path="/about" element={<About/>} />
       <Route path="/courses" element={<CourseHome/>} />
-      <Route path="/team" element={<Team/>} />
-      <Route path="/pricing" element={<Price/>} />
-      <Route path="/journal" element={<Blog/>} />
       <Route path="/contact" element={<Contact/>} />
       <Route path="opt-login/" element={<OptLogin/>} />
       <Route path="opt-signup/" element={<OptionSignup/>} />
@@ -75,7 +74,12 @@ function App() {
       <Route path="course-purchased/" element={<CoursesPurchased/>} />
       <Route path="completed-activities/" element={<CompletedActivities/>} />
       <Route path="pending-activities/" element={<PendingActivities/>} />
-      <Route path="students-assigned/" element={<StudentsAssigned/>} />
+      <Route path="students-assigned/" element={<StudentList/>} />
+      <Route path="students-uploads/" element={<StudentUploads/>} />
+      <Route path="my-uploads/" element={<VideoList/>} />
+      <Route path="tasks-assigned/" element={<TaskAssigned/>} />
+      <Route path="scores-feedbacks/" element={<ScoresFeedbacks/>} />
+      <Route path="feedback-details/" element={<FeedbackDetails/>} />
       </Routes>
       {!isAdminRoute && <Footer />}
 

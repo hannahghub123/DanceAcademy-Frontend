@@ -8,7 +8,7 @@ import { changeaccessS, changeaccessT } from '../../../features/logoutSlice'
 
 const Header = () => {
 
-    const {id} = useParams()
+    // const {id} = useParams()
     const [click, setClick] = useState(false);
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -38,31 +38,35 @@ const Header = () => {
 
     if (!data.accessS && !data.accessT){
       navigate('../')
-    }else if(data.accessS){
+    }
+    else if(data.accessS){
       const sdata = localStorage.getItem("stdDetails")
 
       if(sdata){
         const stdDetails = JSON.parse(sdata);
-        const id = stdDetails.id
+        const studentId = stdDetails.id
   
-        console.log("header ile std id:", id);
+        console.log("header ile std id:", studentId);
       }else {
         console.log("std details not found in localStorage");
       }
       navigate(`../std-dashboard/`)
-    }else{
-      const tdata = localStorage.getItem("tutorDetails")
+    }
+    else{
 
-      if(tdata){
-        const tutorDetails = JSON.parse(tdata);
-        const id = tutorDetails.id
+      const tutordata = localStorage.getItem("tutorDetails")
+
+      if(tutordata){
+        const tutorDetails = JSON.parse(tutordata);
+        const tutorId = tutorDetails.id
   
-        console.log("header ile id:", id);
+        console.log("header ile id:", tutorId);
+        console.log(tutorId,"tutor-id ivdunn ayakua");
+        navigate(`../tutor-dashboard/${tutorId}`)
       }else {
         console.log("Tutor details not found in localStorage");
       }
-      console.log(id,"tutor-id ivdunn ayakua");
-      navigate(`../tutor-dashboard/${id}`)
+      
     }
       
   }
@@ -131,13 +135,13 @@ const Header = () => {
       <header>
         <nav className='flexSB'>
           <ul className={click ? "mobile-nav" : "flexSB "} onClick={() => setClick(false)}>
-            <li>
+            <li className='mt-3'>
               <Link onClick={homeSubmit}>Home</Link>
             </li>
-           <li>
+           <li className='mt-3'>
               <Link to='/courses'>All Courses</Link>
             </li>
-            {(data.accessS)&&<li>
+            {(data.accessS)&&<li className='mt-3'>
               <Link to='/about'>About</Link>
             </li>}
             {/* {(data.accessS)&&<li>
@@ -149,15 +153,15 @@ const Header = () => {
             {/* {(data.accessS)&&<li>
               <Link to='/journal'>Journal</Link>
             </li>} */}
-            {(data.accessS)&&<li>
+            {(data.accessS)&&<li className='mt-3'>
               <Link to='/contact'>Contact</Link>
             </li>}
             {(!data.accessT && !data.accessS) && (
               <>
-                <li>
+                <li className='mt-3'>
                   <Link to='/opt-login'>Login</Link>
                 </li>
-                <li>
+                <li className='mt-3'>
                   <Link to='/opt-signup'>SignUp</Link>
                 </li>
               </>
@@ -165,7 +169,7 @@ const Header = () => {
             
              { ( data.accessS || data.accessT) &&   ( 
               <>
-             <li className="nav-dropdown-item" >
+             <li className="nav-dropdown-item mt-2" >
              <NavDropdown title="For You" className='custom-dropdown'>
                {data.accessS ? <NavDropdown.Item onClick={stdProfile}>MyProfile</NavDropdown.Item> : <NavDropdown.Item onClick={tutorProfile}>MyProfile</NavDropdown.Item>}
                {data.accessS ? <NavDropdown.Item onClick={stdMyNotes}>MyNotes</NavDropdown.Item> : <NavDropdown.Item onClick={tutorMyNotes}>MyNotes</NavDropdown.Item>}
@@ -178,7 +182,7 @@ const Header = () => {
           </ul>
          
           <div className='start'>
-            <div className='button'>GET CERTIFICATE</div>
+            <div className='button mt-3'>EXPLORE YOUR TALENTS</div>
           </div>
           <button className='toggle' onClick={() => setClick(!click)}>
             {click ? <i className='fa fa-times'> </i> : <i className='fa fa-bars'></i>}

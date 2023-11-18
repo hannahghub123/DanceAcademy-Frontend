@@ -10,6 +10,7 @@ import Typography from '@mui/material/Typography';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
+import  { Toaster } from 'react-hot-toast';
 
 
 const TaskUpload = () => {
@@ -51,6 +52,8 @@ const TaskUpload = () => {
         formData.append('description',desc)
         formData.append('student',parseData.id)
         formData.append('task',id)
+
+        const toastid=toast.loading("Uploading..")
         
         try {
             const response = await axios.post(`http://localhost:8000/std/task-upload/`,formData,{
@@ -66,6 +69,8 @@ const TaskUpload = () => {
             if(response.data.message==="success"){
                 setVideoInput(null);
                 setDesc(null);
+
+                toast.dismiss(toastid)
 
                 toast.success("Task Upload", {
                     position: toast.POSITION.TOP_RIGHT
@@ -84,6 +89,7 @@ const TaskUpload = () => {
 
   return (
     <>
+    <Toaster/>
         <Back title='Task Upload'/>
         <br />
         <div className="upload-container">

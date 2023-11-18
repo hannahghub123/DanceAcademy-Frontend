@@ -24,6 +24,7 @@ const TutorDashboard = () => {
     const [uploadCount,setUploadCount] = useState(null);
     const [payDetails,setPayDetails] = useState([]);
     const [totalCount,setTotalCount] = useState(null);
+    const [stdDetails,setStdDetails] = useState([]);
   
     useEffect(()=>{
       const tutorData = localStorage.getItem("tutorDetails")
@@ -47,24 +48,34 @@ const TutorDashboard = () => {
             setPayDetails(res.data.paydata);
             setTotalCount(res.data.totalCount)
         })
+
+        // axiosInstance.post("feedback-details/")
+        // .then((res)=>{
+        //   console.log(res.data);
+        //   setStdDetails(res.data.data)
+        // })
   
       }
     },[])
   
-    const coursePurchasedHandle=()=>{
-      navigate('../course-purchased')
-    }
-  
-    const completedActivityHandle=()=>{
-      navigate("../completed-activities")
-    }
-  
-    const pendingActivityHandle=()=>{
-      navigate('../pending-activities')
+    const myUploadHandle=()=>{
+      navigate('../my-uploads')
     }
 
     const studentAssignedHandle=()=>{
         navigate('../students-assigned/')
+    }
+
+    const taskAssignedHandle=()=>{
+      navigate('../tasks-assigned')
+    }
+
+    const studentUploadsHandle=()=>{
+      navigate('../students-uploads/')
+    }
+
+    const ScoresHandle=()=>{
+      navigate('../scores-feedbacks/')
     }
   
   return (
@@ -74,15 +85,15 @@ const TutorDashboard = () => {
         <h1> </h1>
     
     <div className='dashboard-container'>
-        <Box
+        {/* <Box
         sx={{
           display:'flex',
           flexDirection:'row',
           gap:5,
           marginLeft:3,
         }}
-    >
-        <Card size="lg" variant="outlined" sx={{width:350}}>
+    > */}
+        <Card size="lg" variant="outlined" sx={{width:400}}>
         {/* <Chip size="sm" variant="outlined" color="neutral">
           BASIC
         </Chip> */}
@@ -110,11 +121,14 @@ const TutorDashboard = () => {
             variant="soft"
             color="neutral"
             endDecorator={<KeyboardArrowRight />}
+            onClick={myUploadHandle}
           >
             View in Detail
           </Button>
         </CardActions>
       </Card>
+
+      
       <Card size="lg" variant="outlined" sx={{width:400}}>
         {/* <Chip size="sm" variant="outlined" color="neutral">
           BASIC
@@ -159,6 +173,47 @@ const TutorDashboard = () => {
         {/* <Chip size="sm" variant="outlined" color="neutral">
           BASIC
         </Chip> */}
+        <Typography level="h2">Tasks Assigned</Typography>
+        <Divider inset="none" />
+        <List size="sm" >
+         { payDetails.map((item)=>(
+            <>
+              <ListItem sx={{textTransform:'uppercase'}}>
+              <ListItemDecorator>
+                <Check />
+              </ListItemDecorator>
+              {item.studentId.name} 
+              </ListItem>
+              <Typography>
+                <b>Course</b> - {item.structId.course.title} / {item.structId.title} 
+              </Typography>
+            </>
+         ))}
+        </List>
+        <Divider inset="none" />
+        <CardActions>
+          <Typography level="title-lg" sx={{ mr: 'auto' }}>
+            {totalCount}{' '}
+            <Typography fontSize="sm" textColor="text.tertiary">
+              Students
+            </Typography>
+          </Typography>
+          <Button
+            variant="soft"
+            color="neutral"
+            endDecorator={<KeyboardArrowRight />}
+            onClick={taskAssignedHandle}
+          >
+            View in Detail
+          </Button>
+        </CardActions>
+      </Card>
+
+
+      <Card size="lg" variant="outlined" sx={{width:400}}>
+        {/* <Chip size="sm" variant="outlined" color="neutral">
+          BASIC
+        </Chip> */}
         <Typography level="h2">Student Uploads</Typography>
         <Divider inset="none" />
         <List size="sm" >
@@ -188,38 +243,38 @@ const TutorDashboard = () => {
             variant="soft"
             color="neutral"
             endDecorator={<KeyboardArrowRight />}
-            onClick={pendingActivityHandle}
+            onClick={studentUploadsHandle}
           >
             See More
           </Button>
         </CardActions>
       </Card>
 
-      <Card size="lg" variant="outlined" sx={{width:420}}>
+      <Card size="lg" variant="outlined" sx={{width:400}}>
         {/* <Chip size="sm" variant="outlined" color="neutral">
           BASIC
         </Chip> */}
         <Typography level="h2">Scores & Feedbacks Given </Typography>
         <Divider inset="none" />
         <List size="sm" >
-        {/* { activityDetails.map((item)=>( */}
+        { payDetails.map((item)=>(
         <> <ListItem>
               <ListItemDecorator>
               <Check />
             </ListItemDecorator>
-           {/* Task from - {item.session_assign.tutor.name} */}
+           Scores & Feedbacks of -  {item.studentId.name} 
           </ListItem>
-          <Typography 
+          {/* <Typography 
               sx={{overflow: 'hidden',
               display: '-webkit-box',
               WebkitBoxOrient: 'vertical',
               WebkitLineClamp: 1
               }}>
-            <b>Task : </b>
+            <b>Task : </b> */}
             {/* {item.task} */}
-          </Typography>
+          {/* </Typography> */}
           </>
-            {/* ))} */}
+           ))} 
         </List>
         <Divider inset="none" />
         <CardActions>
@@ -233,14 +288,14 @@ const TutorDashboard = () => {
             variant="soft"
             color="neutral"
             endDecorator={<KeyboardArrowRight />}
-            onClick={completedActivityHandle}
+            onClick={ScoresHandle}
           >
             See More
           </Button>
         </CardActions>
       </Card>
       
-    </Box>
+    {/* </Box> */}
     </div>
     </>
   )

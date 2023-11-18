@@ -31,7 +31,7 @@ const TutorLogin = () => {
       e.preventDefault();
 
         axiosInstance.post("login/",data).then((res)=>{
-          console.log(res.data);
+          console.log(res.data,"{{{{{{{{");
           const tutorId = res.data.id
             const tokenobjs = {
 

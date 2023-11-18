@@ -169,9 +169,9 @@ const TutorCard = () => {
   return (
     <>
             <div className="items shadow"  >
-                <div className="img" style={{width:"300px"}}>
-                    <img src={data.image} alt="" />
-                    <div className="overlay">
+                <div className="img" style={{width:"30px"}}>
+                    <img src={data.image} alt="" style={{width:"228px"}} />
+                    <div >  
                     <i className="fa fa-edit icon"  onClick={handleOpen} title='Edit Details'></i>
                     <i className="fa fa-add icon" title='Upload Videos' onClick={toggleUploadComponent}></i>
                     {/* <i class="fa fa-list icon" title='List Video Uploads' onClick={toggleViewComponent}></i> */}

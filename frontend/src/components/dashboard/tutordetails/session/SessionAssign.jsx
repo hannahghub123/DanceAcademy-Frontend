@@ -6,9 +6,10 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
-import  axiosInstance from "../../axios/stdaxios";
+import  axiosInstance from "../../../../axios/stdaxios";
 import TextField from '@mui/material/TextField';
-import { useParams } from "react-router-dom";
+import toast, { Toaster } from 'react-hot-toast';
+import { useNavigate } from "react-router-dom";
 
 
 const style = {
@@ -26,7 +27,6 @@ const style = {
 
 const SessionAssign = (props) => {
 
-    const {id} = useParams()
   const [open, setOpen] = useState(true);
   const [selectedDateTime, setSelectedDateTime] = useState("");
   const [notes,setNotes] = useState("")
@@ -37,9 +37,16 @@ const SessionAssign = (props) => {
     setSelectedDateTime(newDateTime);
   };
 
+  const navigate=useNavigate()
+
   const sessionAssignSubmit=()=>{
-    const values = {
-        tutor:id,
+
+    const tutorData = localStorage.getItem("tutorDetails")
+    if (tutorData){
+      const parseData = JSON.parse(tutorData)  
+
+      const values = {
+        tutor:parseData.id,
         date_time:selectedDateTime.$d,
         student:props.student,
         course_struct:props.courseplan,
@@ -51,12 +58,16 @@ const SessionAssign = (props) => {
     axiosInstance.post("session-assign/",values)
     .then((res)=>{
         console.log(res.data,"heyy");
+        toast.success("Session Successfully added !") 
+        // navigate(`../tutor-dashboard/${parseData.id}`)
     })
+    }
     handleClose();
   }
 
   return (
     <>
+    <Toaster/>
       <Modal open={open} onClose={handleClose} className="edit-modal">
         <Box sx={style}>
         <h1>Assign Session:</h1>

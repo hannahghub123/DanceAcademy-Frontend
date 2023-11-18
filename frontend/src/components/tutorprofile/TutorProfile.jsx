@@ -3,9 +3,6 @@ import { useParams } from 'react-router-dom';
 import './TutorProfile.css'
 import Back from '../common/back/Back';
 import TutorCard from './TutorCard';
-import StudentList from './StudentList';
-// import UploadWidget from '../cloudinary/UploadWidget';
-// import VideoList from '../cloudinary/video/VideoList';
 
 
 const TutorProfile = () => {
@@ -56,11 +53,13 @@ const TutorProfile = () => {
         <section className='team padding'>
             <div className="container grid">
                 <TutorCard/>
-                <StudentList/>
+                {/* <StudentList/> */}
             </div>
         </section>
 
         </div>
+
+        
     </>
 
     

@@ -209,19 +209,18 @@ const taskHandle=()=>{
                   {/* <i className="fa fa-edit icon" onClick={handleOpen}   title='Edit Details'></i>
                   <i class="fa-solid fa-bell icon" onClick={taskHandle}></i> */}
 
-                <div className="icon-container ml-5">
+                
                   <span>
                     <i className="fa fa-edit icon" onClick={handleOpen} title="Edit Details"></i>
                   </span>
-                  <span className="ml-1 position-relative">
+                  {/* <span className="ml-1 position-relative">
                     <i className="fa-solid fa-bell icon" onClick={taskHandle}  title="ActivityTasks"></i>
                     {taskCount > 0 && (
                       <span className="badge"  onClick={taskHandle} >{taskCount}</span>
                     )}
-                  </span>
+                  </span> */}
                 </div>
 
-                </div>
                 
               </CardContent>
               

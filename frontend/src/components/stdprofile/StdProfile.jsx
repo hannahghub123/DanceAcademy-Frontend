@@ -7,14 +7,14 @@ const StdProfile = () => {
   return (
     <>
         <Back title='Your Profile'/>
-        <div className='std-container'>
+        {/* <div className='std-container '> */}
         
-        <section className='team padding'>
+        <section className='team padding' style={{marginLeft:400}}>
             <div className="container grid">
                 <StdCard/>
             </div>
         </section>
-        </div>
+        {/* </div> */}
     </>
   )
 }
