@@ -22,8 +22,6 @@ const VideoList = () => {
         console.log("dataa",datas);
         axiosInstance.post("video-lists/",datas)
         .then((res)=>{
-            // console.log(res.data,"Videosssss");
-            // console.log("videourlss",res.data.video_urls);
             setVideos(res.data.video_urls)
         })
         .catch((error)=>{

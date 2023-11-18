@@ -39,6 +39,9 @@ import TaskAssigned from './components/dashboard/tutordetails/session/TaskAssign
 import StudentUploads from './components/dashboard/tutordetails/StudentUploads';
 import ScoresFeedbacks from './components/dashboard/tutordetails/feedback/ScoresFeedbacks';
 import FeedbackDetails from './components/dashboard/studentdetails/FeedbackDetails';
+import TutorUploads from './components/admin/dashboard/tutor/TutorUploads';
+import TasksAssigned from './components/admin/dashboard/tutor/TasksAssigned';
+import FeedbacksGiven from './components/admin/dashboard/tutor/FeedbacksGiven';
 
 function App() {
   const isAdminRoute = window.location.pathname.startsWith('/admin');
@@ -90,6 +93,10 @@ function App() {
       <Route path="/admin/tutor/" element={<TutorsComponent/>} />   
       <Route path="/admin/courses/" element={<Course/>} />
       <Route path="/admin/course-struct/:id" element={<CourseStruct/>} />
+      <Route path="/admin/tutor-uploads/" element={<TutorUploads/>} />
+      <Route path="/admin/student-uploads/" element={<StudentUploads/>} />
+      <Route path="/admin/tasks-assigned/" element={<TasksAssigned/>} />
+      <Route path="/admin/feedbacks-given/" element={<FeedbacksGiven/>} />
   
       </Routes>
       {/* {!isAdminRoute && <Footer />} */}

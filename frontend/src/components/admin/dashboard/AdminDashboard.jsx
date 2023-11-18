@@ -1,7 +1,7 @@
 import React from 'react';
 import Sidebar from '../sidebar/Sidebar'
 import Head from '../head/Head';
-
+import DashboardData from './DashboardData';
 
 const AdminDashboard = () => {
 
@@ -9,6 +9,10 @@ const AdminDashboard = () => {
     <>
   <Head title="Admin Dashboard"/>
       <Sidebar/>
+      <div className='d-flex'>
+          <DashboardData/>
+      </div>
+
     </>
   )
 }
