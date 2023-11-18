@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ZegoUIKitPrebuilt } from '@zegocloud/zego-uikit-prebuilt';
+import Back from '../common/back/Back';
 
 function randomID(len) {
     let result = '';
@@ -59,6 +60,7 @@ const Zegocloud = () => {
   };
   return (
     <>
+    <Back/>
        <div
       className="myCallContainer"
       ref={myMeeting}

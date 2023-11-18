@@ -6,7 +6,8 @@ import { Link } from 'react-router-dom';
 import AddActivityTask from './session/AddActivityTask';
 import Heading from '../../common/heading/Heading';
 import Back from '../../common/back/Back';
-
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const StudentList = () => {
 
@@ -67,6 +68,9 @@ const StudentList = () => {
       axiosInstance.post("send-sessionMail/",values)
       .then((res)=>{
         console.log(res.data);
+        toast.success(" Mail SuccessFully Send!", {
+          position: toast.POSITION.TOP_RIGHT
+        });
       })
     }
 
