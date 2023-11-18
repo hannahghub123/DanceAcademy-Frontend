@@ -10,11 +10,13 @@ import 'react-toastify/dist/ReactToastify.css';
 import TextField from '@mui/material/TextField';
 import Head from '../../head/Head';
 import Sidebar from '../../sidebar/Sidebar';
+import { AddDescription, AddTitle } from '../../../../features/addCourseSlice';
 
 const Course = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const coursedata = useSelector((state) => state.admincourseEdit);
+  const newcourse = useSelector((state) => state.newCourse);
 
   const cstructSubmit = (id) => {
     navigate(`../admin/course-struct/${id}`);
@@ -29,6 +31,8 @@ const Course = () => {
   const [image, setImage] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [perPage, setPerPage] = useState(5);
+  const [addcourseDetails,setAddcourseDetails] = useState(false)
+  const [addcourse,setAddcourse] = useState('')
 
   useEffect(() => {
     axiosInstance.get('courses/').then((res) => {
@@ -36,7 +40,7 @@ const Course = () => {
       setAllValues(res.data);
       setValues(res.data.slice(0, perPage));
     });
-  }, [editcourse, perPage]);
+  }, [editcourse, perPage,addcourse]);
 
   const getCurrentPageData = () => {
     const startIndex = (currentPage - 1) * perPage;
@@ -142,12 +146,50 @@ const Course = () => {
     });
   };
 
+  const closeHandle=()=>{
+    setAddcourseDetails(!addcourseDetails)
+  }
+
+  const addcourseHandle=()=>{
+    setAddcourseDetails(!addcourseDetails)
+  }
+
+  const handleAddTitle=(e)=>{
+    setAddcourse({ ...addcourse, title: e.target.value });
+    dispatch(AddTitle(e.target.value));
+  }
+
+  const handleAddDescription=(e)=>{
+    setAddcourse({ ...addcourse, description: e.target.value });
+    dispatch(AddDescription(e.target.value));
+  }
+
+  const AddCourseSubmit=()=>{
+    const values = {
+      title : addcourse.title,
+      description:addcourse.description
+    }
+    axiosInstance.post('add-course/',values)
+    .then((res)=>{
+      console.log(res.data);
+      if(res.data.message === "success"){
+        setAddcourseDetails(!addcourseDetails)
+        toast.success(" New Course Added!", {
+          position: toast.POSITION.TOP_RIGHT
+        });
+      }
+    })
+  }
+
   return (
     <>
       <Head title="Course Details" />
       <Sidebar />
 
       <br />
+<br />
+
+      <button style={{marginLeft:1200}} onClick={addcourseHandle}>Add New Course</button>
       <br />
       <br />
 
@@ -198,6 +240,8 @@ const Course = () => {
           ))}
         </Pagination>
       </div>
+
+
       {courseDetails ? (
         <div className="modal" style={{ display: 'block', position: 'fixed', marginTop: '20px' }}>
           <Modal.Dialog>
@@ -228,6 +272,45 @@ const Course = () => {
 
             <Modal.Footer>
               <Button variant="primary" onClick={handleSubmit}>
+                Save changes
+              </Button>
+            </Modal.Footer>
+          </Modal.Dialog>
+        </div>
+      ) : null}
+
+
+
+{addcourseDetails ? (
+        <div className="modal" style={{ display: 'block', position: 'fixed', marginTop: '20px' }}>
+          <Modal.Dialog>
+            <Modal.Header closeButton onClick={closeHandle}>
+              <Modal.Title>Add New Course : </Modal.Title>
+            </Modal.Header>
+
+            <Modal.Body>
+              <TextField
+                label="Title"
+                variant="outlined"
+                fullWidth
+                // value={editcourse.title}
+                onChange={handleAddTitle}
+              />
+              <TextField
+                label="Description"
+                variant="outlined"
+                fullWidth
+                value={editcourse.description}
+                onChange={handleAddDescription}
+                multiline
+                rows={4}
+              />
+              <label htmlFor="Change Image"></label>
+              {/* <input type="file" onChange={imageHandle} /> */}
+            </Modal.Body>
+
+            <Modal.Footer>
+              <Button variant="primary" onClick={AddCourseSubmit}>
                 Save changes
               </Button>
             </Modal.Footer>

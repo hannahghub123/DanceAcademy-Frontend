@@ -10,6 +10,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import axiosInstance from '../../axios/tutoraxios';
 import axios from 'axios';
 import VideoUpload from '../cloudinary/video/VideoUpload';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const style = {
     position: 'absolute',
@@ -156,6 +158,9 @@ const TutorCard = () => {
           }
 
           handleClose();
+          toast.success(" Profile-Edits Updated!", {
+            position: toast.POSITION.TOP_RIGHT
+          });
         })
     }
     const [isUploadComponentVisible, setIsUploadComponentVisible] = useState(false);
