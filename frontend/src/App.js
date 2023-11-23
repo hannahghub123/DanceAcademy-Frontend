@@ -42,6 +42,10 @@ import FeedbackDetails from './components/dashboard/studentdetails/FeedbackDetai
 import TasksAssigned from './components/admin/dashboard/tutor/TasksAssigned';
 import FeedbacksGiven from './components/admin/dashboard/tutor/FeedbacksGiven';
 import MyUploads from './components/dashboard/studentdetails/MyUploads';
+import ProtectedRouteStdLogin from './components/protectedroute/student/ProtectedRouteStdLogin';
+import ProtectedRouteStdDashboard from './components/protectedroute/student/ProtectedRouteStdDashboard';
+import ProtectedRouteStdProfile from './components/protectedroute/student/ProtectedRouteStdProfile';
+import ProtectedRouteStdMyNotes from './components/protectedroute/student/ProtectedRouteStdMyNotes';
 
 function App() {
   const isAdminRoute = window.location.pathname.startsWith('/admin');
@@ -61,14 +65,27 @@ function App() {
       <Route path="opt-signup/" element={<OptionSignup/>} />
       <Route path="std-signup/" element={<StdSignup/>} />
       <Route path="tutor-signup/" element={<TutorSignup/>} />
+
+      <Route path="" element={<ProtectedRouteStdLogin/>}>
       <Route path="std-login/" element={<StdLogin/>} />
+      </Route>
+      <Route path="" element={<ProtectedRouteStdDashboard/>}>
+      <Route path="std-dashboard/" element={<StudentDashboard/>} />
+      </Route>
+      <Route path="" element={<ProtectedRouteStdProfile/>}>
+      <Route path="std-profile/:id" element={<StdProfile/>} />
+      </Route>
+      <Route path="" element={<ProtectedRouteStdMyNotes/>}>
+      <Route path="Std-MyNotes/:id" element={<StudentMyNotes/>} />
+      </Route>
+
+
       <Route path="tutor-login/" element={<TutorLogin/>} />
       <Route path="tutor-dashboard/:id" element={<TutorDashboard/>} />
-      <Route path="std-dashboard/" element={<StudentDashboard/>} />
       <Route path="tutor-profile/:id" element={<TutorProfile/>} />
-      <Route path="Std-MyNotes/:id" element={<StudentMyNotes/>} />
+
       <Route path="Tutor-MyNotes/:id" element={<StudentMyNotes/>} />
-      <Route path="std-profile/:id" element={<StdProfile/>} />
+
       <Route path='course-details/:id' element={<CourseDetails/>}/>
       <Route path="tutor-videos/" element={<RelatedVideos/>}/>
       <Route path="zego/" element={<Zegocloud/>} /> 
