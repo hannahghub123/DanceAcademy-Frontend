@@ -3,8 +3,6 @@ import React, { useEffect, useState } from 'react';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Back from '../../common/back/Back';
-import ReactPlayer from 'react-player';
-
 
 const VideoList = () => {
     const [videos,setVideos] = useState([]);
