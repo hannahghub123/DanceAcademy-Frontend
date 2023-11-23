@@ -23,7 +23,7 @@ const StdSignup = () => {
 
   const handleSignUp = (e) => {
     e.preventDefault(); // Prevents the default form submission behavior
-
+console.log(values,";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;");
     axiosInstance.post("stdsignup/", values).then((res) => {
       console.log("ivde etheetund");
       console.log(res.data);

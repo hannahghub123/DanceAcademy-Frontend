@@ -3,19 +3,19 @@ export const homeAbout = [
       id: 1,
       cover: "https://img.icons8.com/dotty/80/000000/storytelling.png",
       title: "Online Courses",
-      desc: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+      desc: "Embark on an exciting journey of self-expression through the art of dance with our online courses. Whether you're a beginner or an experienced dancer, our e-learning platform brings the world of dance to your fingertips.",
     },
     {
       id: 1,
       cover: "https://img.icons8.com/ios/80/000000/diploma.png",
-      title: "Earn A Certificates",
-      desc: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+      title: "Explore your talents",
+      desc: "From the comfort of your home, explore diverse dance styles, learn new choreographies, and master the techniques that make each movement come alive.",
     },
     {
       id: 1,
       cover: "https://img.icons8.com/ios/80/000000/athlete.png",
       title: "Learn with Expert",
-      desc: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+      desc: "Our expert instructors guide you step by step, ensuring you not only understand the rhythms but also connect with the soul of each dance form.",
     },
   ]
   export const awrapper = [

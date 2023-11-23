@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Head from './Head';
 import './Header.css';
@@ -114,19 +114,19 @@ const Header = () => {
     }
   }
 
-  const tutorMyNotes=()=>{
-    const tdata = localStorage.getItem("tutorDetails")
+  // const tutorMyNotes=()=>{
+  //   const tdata = localStorage.getItem("tutorDetails")
 
-    if(tdata){
-      const tutorDetails = JSON.parse(tdata);
-      const id = tutorDetails.id
+  //   if(tdata){
+  //     const tutorDetails = JSON.parse(tdata);
+  //     const id = tutorDetails.id
 
-      console.log("header il id und",id);
-      navigate(`../Tutor-MyNotes/${id}`)
-    }else {
-      console.log("Tutor details not found in localStorage");
-    }
-  }
+  //     console.log("header il id und",id);
+  //     navigate(`../Tutor-MyNotes/${id}`)
+  //   }else {
+  //     console.log("Tutor details not found in localStorage");
+  //   }
+  // }
   
 
   return (
@@ -135,7 +135,7 @@ const Header = () => {
       <header>
         <nav className='flexSB'>
           <ul className={click ? "mobile-nav" : "flexSB "} onClick={() => setClick(false)}>
-            <li className='mt-3'>
+            <li className='mt-3 ml-3'>
 
               <Link onClick={homeSubmit}>Home</Link>
             </li>
@@ -145,15 +145,7 @@ const Header = () => {
             {(data.accessS)&&<li className='mt-3'>
               <Link to='/about'>About</Link>
             </li>}
-            {/* {(data.accessS)&&<li>
-              <Link to='/team'>Team</Link>
-            </li>} */}
-            {/* {(data.accessS)&&<li>
-              <Link to='/pricing'>Pricing</Link>
-            </li>} */}
-            {/* {(data.accessS)&&<li>
-              <Link to='/journal'>Journal</Link>
-            </li>} */}
+
             {(data.accessS)&&<li className='mt-3'>
               <Link to='/contact'>Contact</Link>
             </li>}
@@ -168,22 +160,34 @@ const Header = () => {
               </>
             )}
             
-             { ( data.accessS || data.accessT) &&   ( 
+             { ( data.accessS) &&   ( 
               <>
              <li className="nav-dropdown-item mt-2" >
              <NavDropdown title="For You" className='custom-dropdown'>
-               {data.accessS ? <NavDropdown.Item onClick={stdProfile}>MyProfile</NavDropdown.Item> : <NavDropdown.Item onClick={tutorProfile}>MyProfile</NavDropdown.Item>}
-               {data.accessS ? <NavDropdown.Item onClick={stdMyNotes}>MyNotes</NavDropdown.Item> : <NavDropdown.Item onClick={tutorMyNotes}>MyNotes</NavDropdown.Item>}
-               <NavDropdown.Item href="#action/3.3">NewsToday</NavDropdown.Item>
-               <NavDropdown.Divider />
-               <NavDropdown.Item href="#action/3.4">My Favourites</NavDropdown.Item>
+               {data.accessS ? 
+               <NavDropdown.Item onClick={stdProfile}>MyProfile</NavDropdown.Item> : ""}
+               {data.accessS ? <NavDropdown.Item onClick={stdMyNotes}>MyNotes</NavDropdown.Item> : ""}
+               {/* <NavDropdown.Item href="#action/3.3">NewsToday</NavDropdown.Item> */}
+               {/* <NavDropdown.Divider /> */}
+               {/* <NavDropdown.Item href="#action/3.4">My Favourites</NavDropdown.Item> */}
              </NavDropdown>
            </li>
            </>  )}
+
+           { ( data.accessT) &&   ( 
+              <>
+              <li className=" mt-2" >
+              <NavDropdown title="For You" className='custom-dropdown'>
+              <NavDropdown.Item onClick={tutorProfile}>MyProfile</NavDropdown.Item>
+             </NavDropdown>
+              </li>
+           </>  )}
+
+         
           </ul>
          
           <div className='start'>
-            <div className='button mt-3'>EXPLORE YOUR TALENTS</div>
+            <div className='button mt-3'>EXPLORE YOUR INTERESTS</div>
           </div>
           <button className='toggle' onClick={() => setClick(!click)}>
             {click ? <i className='fa fa-times'> </i> : <i className='fa fa-bars'></i>}

@@ -71,7 +71,7 @@ const TasksAssigned = () => {
         marginBottom:'7px'}}
         >
           
-    {taskDetails.map((item) => (
+    {taskDetails?taskDetails.map((item) => (
       <Grid key={item.id} item xs={6} style={{ height: 'auto', width: '400px' }}>
         <Item>
           <div className='d-flex flex-column'>
@@ -98,16 +98,10 @@ const TasksAssigned = () => {
                 <b>{item.status}</b>
             </button>
             
-            {/* <div className='tasknotes-text'>
-              <span className='ml-4 '><i className="fas fa-edit icon"></i></span>
-
-              <span className='ml-1 '><i className="fas fa-trash icon"></i></span>
-            </div> */}
-            
           </div>
         </Item>
       </Grid>
-    ))}
+    )):""}
 
     </Grid>
     </div>

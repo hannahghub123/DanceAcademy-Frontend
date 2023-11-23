@@ -21,7 +21,7 @@ const AboutCard = () => {
                     <div className='img'>
                       <img src={val.cover} alt='' />
                     </div>
-                    <div className='text'>
+                    <div className='text ml-3'>
                       <h2 key={val.id}>{val.title}</h2>
                       <p>{val.desc}</p>
                     </div>
@@ -32,7 +32,7 @@ const AboutCard = () => {
           </div>
         </div>
       </section>
-      <Awrapper />
+      {/* <Awrapper /> */}
     </>
   )
 }

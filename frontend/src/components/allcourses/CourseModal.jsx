@@ -96,21 +96,20 @@ const CourseModal = (props) => {
                 tutorName: selectedTutor,
                 razorpayId: response.razorpay_payment_id,
               };
-
-              console.log(datas,"lllllll");
     
               axios
                 .post("http://localhost:8000/std/course-payment/", datas)
                 .then((res) => {
-                //   if (res.data.message === "already subscribed") {
-                //     alert("Already subscribed");
-                //     console.log("already");
-                //   } else {
-                //     alert("successfully subscribed");
-                //   }
-                console.log(res.data);
-                alert("Payment Successful")
-                navigate(`../std-profile/${parsedData.id}`);
+                  
+                  if (res.data.message === "Course Unavailable") {
+                    alert("You cannot purchase this course");
+                    console.log("already");
+                  } else {
+                    console.log(res.data);
+                    alert("Payment Successful")
+                    navigate(`../std-profile/${parsedData.id}`);
+                  }
+                
 
                 })
                 .catch((error) => {

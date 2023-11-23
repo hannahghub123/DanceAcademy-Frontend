@@ -49,7 +49,7 @@ const CoursesCard = () => {
                         <div className="content flex">
                             <div className="left">
                                 <div className="img">
-                                    <img src={val.cover} alt="" />
+                                    <img src={val.course.image} alt="" />
                                 </div>
                             </div>
                             <div className="text">
@@ -72,9 +72,8 @@ const CoursesCard = () => {
                             <h3>{val.price} / {val.price_per} </h3>
                         </div>
 
-                        {console.log(val.id,"hi id data")}
                         {/* <button className='outline-btn' onClick={modalHandle}>ENROLL NOW !</button> */}
-                        { acc && <CourseModal id={val.id}/>}
+                        { acc && (val.course.status === "Course Available") && <CourseModal id={val.id}/>}
                         
                     
                     </div>

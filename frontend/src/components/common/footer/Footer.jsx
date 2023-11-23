@@ -5,7 +5,7 @@ import { blog } from '../../../dummydata'
 const Footer = () => {
   return (
     <>
-        <section className="newletter">
+        {/* <section className="newletter">
             <div className="container flexSB">
                 <div className="left row">
                     <h1>NewsLetter - Stay tuned and get the latest updates</h1>
@@ -16,7 +16,7 @@ const Footer = () => {
                     <i className='fa fa-paper-plane'></i>
                 </div>
             </div>
-        </section>
+        </section> */}
 
         {/* <footer>
             <div className="container padding">

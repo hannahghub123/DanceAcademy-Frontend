@@ -47,7 +47,7 @@ const StdCard = () => {
 
   useEffect(()=>{
     const stdDetails = localStorage.getItem("stdDetails");
-    console.log(stdDetails,"stdDetailsssssss");
+
     if (stdDetails) {
       const parseData = JSON.parse(stdDetails);
       console.log("Parsedata",parseData)
@@ -166,6 +166,8 @@ const taskHandle=()=>{
   setTask(!task)
 }
 
+console.log(data,"99999");
+
   return (
     <>
 
@@ -189,7 +191,7 @@ const taskHandle=()=>{
                   </b>
                   </Typography>
                   <Typography sx={{textTransform:"uppercase"}}>
-                  {/* {(data.course).map((item)=>item.title)} */}
+                  {/* {data.course.title} */}
                   </Typography>
                   <Typography >
                     Username - {data.username}

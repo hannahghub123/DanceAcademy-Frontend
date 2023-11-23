@@ -26,25 +26,29 @@ const OnlineCourses = () => {
 
   return (
     <>
-        <section className='online'>
-            <div className="container" >
-                <Heading subtitle='COURSES' title='Browse Our Online Courses'/>
+       <section className='online'>
+    <div className="container">
+        <Heading subtitle='COURSES' title='Browse Our Online Courses'/>
 
-                <div className="content grid3" style={{height:"700px",width:"100%"}}>
-                    {courses.map((val)=>(
-                        <div className="box" onClick={()=>courseHandle(val.id)}>
-                            <div className="img">
-                                <img src={val.image} alt="" />
-                                {/* <img src={val.hoverCover} alt="" className='show' /> */}
-                            </div>
-                            <b> <h1 style={{textTransform:"uppercase"}}> {val.title}</h1> </b>
-                            <p className='description'>{val.description}</p>
-                            <span>{val.status}</span>
-                        </div>
-                    ))}
+        <div className="content grid3" style={{ height: "100%", width: "100%", display: "grid", gridTemplateColumns: "repeat(5, 1fr)" }}>
+            {courses.map((val) => (
+                <div className="box" onClick={() => courseHandle(val.id)} style={{ height: "400px", width: "100%" }}>
+                    <div className="img" style={{ height: "60px", width: "80px" }}>
+                        <img src={val.image} alt="" />
+                    </div>
+                    <div className="info">
+                        <b>
+                            <h1 style={{ textTransform: 'uppercase' }}>{val.title}</h1>
+                        </b>
+                        <p className="description">{val.description}</p>
+                        <span>{val.status}</span>
+                    </div>
                 </div>
-            </div>
-        </section>
+            ))}
+        </div>
+    </div>
+</section>
+
     </>
   )
 }

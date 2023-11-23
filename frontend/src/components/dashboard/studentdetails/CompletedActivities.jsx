@@ -50,7 +50,7 @@ const CompletedActivities = () => {
       columnSpacing={{ xs: 1, sm: 2, md: 3 }}
       sx={{ width: '100%' }}
     >
-    {notes.map((item) => (
+    {notes?notes.map((item) => (
       <Grid xs={6}>
         <Item>
           <div className='d-flex flex-column justify-content-between '>
@@ -60,7 +60,7 @@ const CompletedActivities = () => {
           </div>
         </Item>
       </Grid>
-    ))}
+    )):""}
 
     </Grid>
     </div>

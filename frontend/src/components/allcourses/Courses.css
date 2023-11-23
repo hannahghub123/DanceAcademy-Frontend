@@ -64,6 +64,7 @@
   /*-------------online---------*/
   .online {
     text-align: center;
+  
   }
   .online .box {
     box-shadow: 0 5px 25px -2px rgb(0 0 0 / 6%);
@@ -71,6 +72,21 @@
     padding: 30px 20px;
     transition: 0.5s;
   }
+
+  .box {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px; 
+  }
+
   .online .img {
     width: 80px;
     height: 80px;

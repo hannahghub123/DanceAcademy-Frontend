@@ -4,6 +4,7 @@ import {createSlice} from "@reduxjs/toolkit";
 const INITITALSTATE={
     title:"",
     description:"",
+    status:""
 }
 
 
@@ -20,7 +21,9 @@ const admincourseEditSlice = createSlice(
             changeDescription:(state,action)=>{
                 state.value.description=action.payload
             },
-            
+            changeStatus:(state,action)=>{
+                state.value.status = action.payload
+            }
 
         }
 
@@ -28,6 +31,6 @@ const admincourseEditSlice = createSlice(
 
 )
 
-export const {changeTitle,changeDescription} = admincourseEditSlice.actions
+export const {changeTitle,changeDescription,changeStatus} = admincourseEditSlice.actions
 
 export default admincourseEditSlice.reducer

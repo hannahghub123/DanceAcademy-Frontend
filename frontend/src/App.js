@@ -42,6 +42,7 @@ import FeedbackDetails from './components/dashboard/studentdetails/FeedbackDetai
 import TutorUploads from './components/admin/dashboard/tutor/TutorUploads';
 import TasksAssigned from './components/admin/dashboard/tutor/TasksAssigned';
 import FeedbacksGiven from './components/admin/dashboard/tutor/FeedbacksGiven';
+import MyUploads from './components/dashboard/studentdetails/MyUploads';
 
 function App() {
   const isAdminRoute = window.location.pathname.startsWith('/admin');
@@ -83,6 +84,7 @@ function App() {
       <Route path="tasks-assigned/" element={<TaskAssigned/>} />
       <Route path="scores-feedbacks/" element={<ScoresFeedbacks/>} />
       <Route path="feedback-details/" element={<FeedbackDetails/>} />
+      <Route path="student-my-uploads/" element={<MyUploads/>} />
       </Routes>
       {!isAdminRoute && <Footer />}
 

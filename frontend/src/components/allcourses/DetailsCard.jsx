@@ -36,10 +36,10 @@ const DetailsCard = () => {
             <div className="container">
             <Heading subtitle='RELATED TUTOR-DETAILS' title='Browse Our tutor Details'/>
                 {/* <p>{details.course.description}</p> */}
-                <div className="content grid3">
+                <div className="content grid3" style={{ height: "100%", width: "100%", display: "grid", gridTemplateColumns: "repeat(5, 1fr)" }}>
                     {details.map((val)=>(
                         <div className="box">
-                            <div className="img">
+                            <div className="img" style={{width:100,height:100 }}>
                                 <img src={val.image} alt="" />
                             </div>
                             {/* <br />
@@ -47,7 +47,7 @@ const DetailsCard = () => {
                             <h1>{val.name}</h1>
                             <p>{val.qualification}/{val.expertise} yr expertise</p>
                          
-                        <span onClick={()=>videoDisplayHandle(val.id)} style={{width:"130px",padding:8,backgroundColor:"#fff"}}>Top Uploads</span>
+                        <span className='ml-5 mr-5' onClick={()=>videoDisplayHandle(val.id)} style={{width:"130px",padding:8,backgroundColor:"#fff"}}>Top Uploads</span>
                          
                         </div>
                     ))}

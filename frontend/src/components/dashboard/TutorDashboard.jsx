@@ -85,28 +85,19 @@ const TutorDashboard = () => {
         <h1> </h1>
     
     <div className='dashboard-container'>
-        {/* <Box
-        sx={{
-          display:'flex',
-          flexDirection:'row',
-          gap:5,
-          marginLeft:3,
-        }}
-    > */}
+
         <Card size="lg" variant="outlined" sx={{width:400}}>
-        {/* <Chip size="sm" variant="outlined" color="neutral">
-          BASIC
-        </Chip> */}
+
         <Typography level="h2">My Uploads</Typography>
         <Divider inset="none" />
         <List size="sm" >
-         { myuploads.map((item)=>(<ListItem>
+         {myuploads? myuploads.map((item)=>(<ListItem>
             <ListItemDecorator>
               <Check />
             </ListItemDecorator>
             Uploaded on - {item.up_time}
           </ListItem>
-          ))}
+          )):""}
          
         </List>
         <Divider inset="none" />
@@ -130,13 +121,11 @@ const TutorDashboard = () => {
 
       
       <Card size="lg" variant="outlined" sx={{width:400}}>
-        {/* <Chip size="sm" variant="outlined" color="neutral">
-          BASIC
-        </Chip> */}
+ 
         <Typography level="h2">Students Assigned</Typography>
         <Divider inset="none" />
         <List size="sm" >
-         { payDetails.map((item)=>(
+         {payDetails? payDetails.map((item)=>(
             <>
               <ListItem sx={{textTransform:'uppercase'}}>
               <ListItemDecorator>
@@ -148,7 +137,7 @@ const TutorDashboard = () => {
                 <b>Course</b> - {item.structId.course.title} / {item.structId.title} 
               </Typography>
             </>
-         ))}
+         )):""}
         </List>
         <Divider inset="none" />
         <CardActions>
@@ -170,13 +159,11 @@ const TutorDashboard = () => {
       </Card>
 
       <Card size="lg" variant="outlined" sx={{width:400}}>
-        {/* <Chip size="sm" variant="outlined" color="neutral">
-          BASIC
-        </Chip> */}
+
         <Typography level="h2">Tasks Assigned</Typography>
         <Divider inset="none" />
         <List size="sm" >
-         { payDetails.map((item)=>(
+         {payDetails? payDetails.map((item)=>(
             <>
               <ListItem sx={{textTransform:'uppercase'}}>
               <ListItemDecorator>
@@ -188,7 +175,7 @@ const TutorDashboard = () => {
                 <b>Course</b> - {item.structId.course.title} / {item.structId.title} 
               </Typography>
             </>
-         ))}
+         )):""}
         </List>
         <Divider inset="none" />
         <CardActions>
@@ -211,13 +198,11 @@ const TutorDashboard = () => {
 
 
       <Card size="lg" variant="outlined" sx={{width:400}}>
-        {/* <Chip size="sm" variant="outlined" color="neutral">
-          BASIC
-        </Chip> */}
+
         <Typography level="h2">Student Uploads</Typography>
         <Divider inset="none" />
         <List size="sm" >
-         { payDetails.map((item)=>(
+         {payDetails? payDetails.map((item)=>(
             <>
               <ListItem sx={{textTransform:'uppercase'}}>
               <ListItemDecorator>
@@ -229,7 +214,7 @@ const TutorDashboard = () => {
                 <b>Course</b> - {item.structId.course.title} / {item.structId.title} 
               </Typography>
             </>
-         ))}
+         )):""}
         </List>
         <Divider inset="none" />
         <CardActions>
@@ -251,13 +236,11 @@ const TutorDashboard = () => {
       </Card>
 
       <Card size="lg" variant="outlined" sx={{width:400}}>
-        {/* <Chip size="sm" variant="outlined" color="neutral">
-          BASIC
-        </Chip> */}
+
         <Typography level="h2">Scores & Feedbacks Given </Typography>
         <Divider inset="none" />
         <List size="sm" >
-        { payDetails.map((item)=>(
+        { payDetails?payDetails.map((item)=>(
         <> <ListItem>
               <ListItemDecorator>
               <Check />
@@ -274,7 +257,7 @@ const TutorDashboard = () => {
             {/* {item.task} */}
           {/* </Typography> */}
           </>
-           ))} 
+           )):""} 
         </List>
         <Divider inset="none" />
         <CardActions>

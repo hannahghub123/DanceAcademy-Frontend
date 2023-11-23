@@ -37,7 +37,7 @@ const stdSignupSlice = createSlice(
                 }
                 else{
                     state.value.error.username=null
-                    state.value.name=action.payload
+                    state.value.username=action.payload
                     state.value.errorcheck=false
                 }
             },

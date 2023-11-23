@@ -93,54 +93,21 @@ const StudentUploads = () => {
         <Back title='Student Uploads' />
         <br />
       
-        <Box
-    //   sx={{
-    //     display: 'flex',
-    //     flexWrap: 'wrap',
-    //     '& > :not(style)': {
-    //       m: 1,
-    //       width: 330,
-    //       height: "fit-content",
-    //     },
-    //   }}
-    >
+        <Box>
 
-{/* <ul style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: "20px" , marginRight:20}}>
-  {videos.map((item, index) => (
-    <Paper key={item.id} elevation={3}>
-      <li>
-        <video width="100%" height="200" controls>
-          <source src={item.task_upload} type="video/mp4" />
-        </video>
-        <h6 className='text-center'>Uploads From - {item.student}</h6>
-        <p style={{ textAlign: "center", fontFamily: "sans-serif", fontSize: "15px" }}>{item.description}</p>
-      </li>
-    </Paper>
-  ))}
-</ul> */}
-
-<ul className='items' style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: "20px", marginRight:20 }}>
-  {videos.map((item) => (
-    <>
-    <Paper key={item.id} elevation={3}>
-      <li>
-        <ReactPlayer
-          url={item.task_upload}
-          width="100%"
-          height="200px"
-          controls
-        />
-        <h6 className='text-center mt-3'>Uploads From - {item.student.name}</h6>
-        <p style={{ textAlign: "center", fontFamily: "sans-serif", fontSize: "15px" }}>{item.description}</p>
-        <button className='edit-btn' onClick={()=>modalHandle(item.student.id,item.id)} >Add Scores & Feedbacks</button>
-        {console.log(item)}
-      </li>
-
-    </Paper>
-
-    </>
-  ))}
-</ul>
+        <ul style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: "20px" , marginRight:20}}>
+            {videos.map((item, index) => (
+              <Paper key={item.id} elevation={3}>
+                <li>
+                  <video width="100%" height="200" controls>
+                    <source src={item.task_upload} type="video/mp4" />
+                  </video>
+                  <h6 className='text-center'>Uploads From - {item.student.name}</h6>
+                  <p style={{ textAlign: "center", fontFamily: "sans-serif", fontSize: "15px" }}>{item.description}</p>
+                </li>
+              </Paper>
+            ))}
+          </ul> 
 
 
     </Box>

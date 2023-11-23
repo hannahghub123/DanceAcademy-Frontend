@@ -2,7 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import './TutorProfile.css'
 import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
+import ImageListItem from "@mui/material/ImageListItem";
+import Stack from "@mui/joy/Stack";
+import Card from "@mui/joy/Card";
+import CardContent from "@mui/joy/CardContent";import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
 import {changeEmail, changeName, changePassword, changePhone, changeUsername, changeExpertise, changeQualification} from '../../features/tutorprofileEditSlice';
@@ -116,10 +119,6 @@ const TutorCard = () => {
 
     
     const handleSubmit = ()=>{
-        console.log("id ivde kittunund",id)
-
-        console.log("pass chyunna data",data,"???????????????????????????");
-       
         
         axiosInstance.post("tprofedit/",data).then((res)=>{
           console.log(res.data," hi res.data ahn ith",res.data.name);
@@ -173,29 +172,66 @@ const TutorCard = () => {
 
   return (
     <>
-            <div className="items shadow"  >
-                <div className="img" style={{width:"30px"}}>
-                    <img src={data.image} alt="" style={{width:"228px"}} />
-                    <div >  
-                    <i className="fa fa-edit icon"  onClick={handleOpen} title='Edit Details'></i>
-                    <i className="fa fa-add icon" title='Upload Videos' onClick={toggleUploadComponent}></i>
-                    {/* <i class="fa fa-list icon" title='List Video Uploads' onClick={toggleViewComponent}></i> */}
-                    </div>
-                </div>
+ <div className="profile-card ">
+          <Stack >
+            <Card sx={{ width: 550 }}>
+              <CardContent orientation="horizontal">
+                <ImageListItem sx={{ width: 200 }}>
+                <img
+                    srcSet={data.image}
+                    src={data.image}
+                    loading="lazy"
+                  />
+                </ImageListItem>
+
+
                 <div className="details">
-                    <h2 key={data.id}>{data.name}</h2>
-                    <h2  className="all-caps"><b>{data.course.title}</b></h2> 
-        
-                    <p className="details-text">
-                
-                        Username - {data.username} <br />
-                        Qualification - {data.qualification} <br />
-                        Expertise - {data.expertise} Years<br />
-                        Email - {data.email} <br />
-                        Phone - {data.phone} <br /> 
-                    </p> 
+                  <Typography sx={{color:"black"}}>
+                  <b>
+                  {data.name}
+                  </b>
+                  </Typography>
+                  <br />
+                  <Typography sx={{textTransform:"uppercase"}}>
+                  <b>{data.course[0].title}</b>
+                  </Typography>
+                  <Typography >
+                    Username - {data.username}
+                  </Typography>
+                  <Typography>
+                    Phone - {data.qualification}
+                  </Typography>
+                  <Typography>
+                    Phone - {data.expertise} Years
+                  </Typography>
+                  <Typography >
+                    
+                    Email - {data.email}
+                  </Typography>
+                  <Typography>
+                    Phone - {data.phone}
+                  </Typography>
+                  <Typography>
+                    Password - {data.password}
+                  </Typography>
+                  <br />
+
+                  <span>
+                    <i className="fa fa-edit icon"  onClick={handleOpen} title='Edit Details'></i>
+                    <i className="fa fa-add icon" title='Upload Videos' onClick={toggleUploadComponent}></i>                  
+                  </span>
+
                 </div>
-            </div>
+
+                
+              </CardContent>
+              
+
+              
+            </Card>
+          </Stack>
+        </div>
+
 
             <>
             {isUploadComponentVisible ? (
@@ -231,7 +267,7 @@ const TutorCard = () => {
             label="Course"
             variant="outlined"
             fullWidth
-            value={data.course.title}
+            value={data.course[0].title}
             InputProps={{
                 readOnly: true,
               }}

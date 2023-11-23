@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Table, Modal, Button, Pagination } from 'react-bootstrap';
 import axiosInstance from '../../../../axios/tutoraxios';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeDescription, changeTitle } from '../../../../features/admincourseEditSlice';
+import { changeDescription, changeTitle, changeStatus } from '../../../../features/admincourseEditSlice';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -61,6 +61,11 @@ const Course = () => {
     dispatch(changeTitle(e.target.value));
   };
 
+  const handleStatusChange = (e) => {
+    setEditCourse({ ...editcourse, status: e.target.value });
+    dispatch(changeStatus(e.target.value));
+  };
+
   const handleDescriptionChange = (e) => {
     setEditCourse({ ...editcourse, description: e.target.value });
     dispatch(changeDescription(e.target.value));
@@ -75,6 +80,7 @@ const Course = () => {
       id: editcourse.id,
       title: editcourse.title,
       description: editcourse.description,
+      status: editcourse.status
     };
 
     console.log(coursedatas, 'ji');
@@ -131,6 +137,7 @@ const Course = () => {
             ...value,
             title: updatedData.title,
             description: updatedData.description,
+            status: updatedData.status
           };
         } else {
           return value;
@@ -211,6 +218,7 @@ const Course = () => {
                 <td>{item.id}</td>
                 <td>
                   <img src={item.image} alt="" style={{ width: '60px', maxHeight: '70px' }} />
+                  <div>[{item.status}] </div>
                 </td>
                 <td>{item.title}</td>
                 <td>
@@ -256,6 +264,13 @@ const Course = () => {
                 fullWidth
                 value={editcourse.title}
                 onChange={handleTitleChange}
+              />
+              <TextField
+                label="Status"
+                variant="outlined"
+                fullWidth
+                value={editcourse.status}
+                onChange={handleStatusChange}
               />
               <TextField
                 label="Description"

@@ -90,7 +90,7 @@ const StudentMyNotes = () => {
 
   return (
     <>
-    <Back title="Your MyNotes (std)"/>
+    <Back title="MyNotes"/>
     <br />
         <div className='notes'>
         <h1>Add Notes</h1>
