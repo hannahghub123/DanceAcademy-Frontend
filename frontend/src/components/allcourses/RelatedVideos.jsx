@@ -2,12 +2,9 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
-import { useParams } from 'react-router-dom';
 import './Courses.css';
 
 const RelatedVideos = (props) => {
-
-    // const {id} = useParams()
     
     const [videos,setVideos] = useState([]);
 

@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Back from '../../common/back/Back';
-import ReactPlayer from 'react-player';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Modal from '@mui/material/Modal';

@@ -46,23 +46,6 @@ const DashboardData = () => {
       navigate('../admin/courses/')
     }
 
-//     const tutorUploadtHandle=()=>{
-//         navigate('../admin/tutor-uploads/')
-//     }
-
-//     const stdUploadHandle=()=>{
-//       navigate('../admin/student-uploads/')
-//   }
-
-//   const tasksAssignedHandle=()=>{
-//     navigate('../admin/tasks-assigned/')
-// }
-
-// const feedbacksgivenHandle=()=>{
-//   navigate('../admin/feedbacks-given/')
-// }
-
-
 
 
   return (
