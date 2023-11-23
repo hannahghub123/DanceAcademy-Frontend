@@ -15,10 +15,10 @@ const DashboardData = () => {
     const [studentsCount,setstudentsCount] = useState(null)
     const [tutorsCount,setTutorsCount] = useState(null)
     const [coursesCount,setCoursesCount] = useState(null)
-    const [tutorUploadsCount,setTutorUploadsCount] = useState(null)
-    const [stdUploadsCount,setStudentUploadsCount] = useState(null)
-    const [taskCount,setTaskCount] = useState(null)
-    const [feedbackCount,setFeedbackCount] = useState(null)
+    // const [tutorUploadsCount,setTutorUploadsCount] = useState(null)
+    // const [stdUploadsCount,setStudentUploadsCount] = useState(null)
+    // const [taskCount,setTaskCount] = useState(null)
+    // const [feedbackCount,setFeedbackCount] = useState(null)
 
     useEffect(()=>{
         axiosInstance.post("count/")
@@ -27,10 +27,10 @@ const DashboardData = () => {
             setstudentsCount(res.data.stdCount)
             setTutorsCount(res.data.tutorCount)
             setCoursesCount(res.data.courseCount)
-            setStudentUploadsCount(res.data.stdUploadcount)
-            setTutorUploadsCount(res.data.tutorUploadcount)
-            setTaskCount(res.data.taskCount)
-            setFeedbackCount(res.data.feedbackCount)
+            // setStudentUploadsCount(res.data.stdUploadcount)
+            // setTutorUploadsCount(res.data.tutorUploadcount)
+            // setTaskCount(res.data.taskCount)
+            // setFeedbackCount(res.data.feedbackCount)
         })
     },[])
 
@@ -109,7 +109,7 @@ const DashboardData = () => {
           </Button>
         </Card>
 
-        <Card variant="soft" sx={{ height: '200px', width:'350px',backgroundColor:'lightgrey' }}>
+        {/* <Card variant="soft" sx={{ height: '200px', width:'350px',backgroundColor:'lightgrey' }}>
           <CardContent>
             <Typography level="title-md">TUTOR UPLOADS</Typography>
             <Typography sx={{ fontSize: '50px' }}>{tutorUploadsCount}</Typography>
@@ -167,7 +167,7 @@ const DashboardData = () => {
           >
             View in Detail
           </Button>
-        </Card>
+        </Card> */}
       </Box>
       <br />
       <br />
