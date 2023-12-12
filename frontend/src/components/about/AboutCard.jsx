@@ -10,7 +10,7 @@ const AboutCard = () => {
         <section className='aboutHome'>
         <div className='container flexSB'>
           <div className='left row mt-5'>
-            <img src='./images/about.webp' alt='' />
+            <img src='./images/blog/her.jpg' alt='' />
           </div>
           <div className='right row'>
             <Heading subtitle='LEARN ANYTHING' title='Benefits About Online Learning Expertise' />

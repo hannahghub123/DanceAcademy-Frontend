@@ -38,8 +38,8 @@ const AdminLogin = () => {
     }
     
   return (
-<div className="vh-100">
-         <div className="card  addusercard">
+< >
+         <div className="card  addusercard mt-5" >
       <div className="container mt-5">
         <h2 className="mb-4">Admin Login Form</h2>
 
@@ -76,7 +76,7 @@ const AdminLogin = () => {
         </button>
       </div>
       </div>
-    </div>
+    </>
   )
 }
 
