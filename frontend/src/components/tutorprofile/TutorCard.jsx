@@ -193,7 +193,7 @@ const TutorCard = () => {
                   </Typography>
                   <br />
                   <Typography sx={{textTransform:"uppercase"}}>
-                  <b>{data.course[0].title}</b>
+                  {/* <b>{data.course[0].title}</b> */}
                   </Typography>
                   <Typography >
                     Username - {data.username}
@@ -267,7 +267,7 @@ const TutorCard = () => {
             label="Course"
             variant="outlined"
             fullWidth
-            value={data.course[0].title}
+            // value={data.course[0].title}
             InputProps={{
                 readOnly: true,
               }}
