@@ -30,7 +30,6 @@ const AddNotesModal = (props) => {
     const handleClose = () => setOpen(false);
     const [addnotes,setAddNotes] = React.useState("");
 
-    console.log(addnotes,"addnotes");
 
     const handleSubmit = ()=>{
         const values={
@@ -40,7 +39,6 @@ const AddNotesModal = (props) => {
 
         axiosInstance.post("add-notes/",values)
         .then((res)=>{
-            console.log(res.data);
             if (res.data.message === "success"){
               props.setRender((prev)=> !prev)
             }

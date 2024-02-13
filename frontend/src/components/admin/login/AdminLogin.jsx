@@ -16,17 +16,13 @@ const AdminLogin = () => {
             username: adminobj.value.username,
             password: adminobj.value.password
         };
-        console.log(adminData,"ithahn vanne");
         axiosInstance
             .post('adminlogin/',adminData).then((response)=>{
-                console.log("Vannuu aliyaa",response.data);
 
                 const tokenobj = {
                     adminrefresh : response.data.adminrefresh,
                     adminaccess: response.data.adminaccess,
                 };
-
-                console.log("tokenobjs..",tokenobj);
 
                 localStorage.setItem("adminAccessToken",JSON.stringify(response.data.adminaccess));
                 localStorage.setItem("adminData",JSON.stringify(response.data.adminData));

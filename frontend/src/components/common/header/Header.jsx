@@ -23,14 +23,11 @@ const Header = () => {
       
       const accT = localStorage.getItem("accessToken-T");
       const accS = localStorage.getItem("accessToken-S");
-      console.log("accT",accT)
-      console.log("accS",accS)
+
       dispatch(changeaccessT(accT))
       dispatch(changeaccessS(accS))
    
   }, []);
-
-  console.log(data.accessS,"acccesssssssSSSSSSSSSS");
 
   const homeSubmit = (event)=>{
    
@@ -46,7 +43,6 @@ const Header = () => {
         const stdDetails = JSON.parse(sdata);
         const studentId = stdDetails.id
   
-        console.log("header ile std id:", studentId);
       }else {
         console.log("std details not found in localStorage");
       }
@@ -60,8 +56,6 @@ const Header = () => {
         const tutorDetails = JSON.parse(tutordata);
         const tutorId = tutorDetails.id
   
-        console.log("header ile id:", tutorId);
-        console.log(tutorId,"tutor-id ivdunn ayakua");
         navigate(`../tutor-dashboard/${tutorId}`)
       }else {
         console.log("Tutor details not found in localStorage");
@@ -78,7 +72,6 @@ const Header = () => {
       const stdDetails = JSON.parse(sdata);
       const id = stdDetails.id
 
-      console.log("header std il id und",id);
       navigate(`../std-profile/${id}`)
     }else {
       console.log("Tutor details not found in localStorage");
@@ -93,7 +86,6 @@ const Header = () => {
       const tutorDetails = JSON.parse(tdata);
       const id = tutorDetails.id
 
-      console.log("header il id und",id);
       navigate(`../tutor-profile/${id}`)
     }else {
       console.log("Tutor details not found in localStorage");
@@ -107,7 +99,6 @@ const Header = () => {
       const stdDetails = JSON.parse(sdata);
       const id = stdDetails.id
 
-      console.log("header std il id und",id);
       navigate(`../Std-MyNotes/${id}`)
     }else {
       console.log("Tutor details not found in localStorage");

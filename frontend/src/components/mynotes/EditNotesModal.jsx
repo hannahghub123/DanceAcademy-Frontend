@@ -37,7 +37,6 @@ const EditNotesModal = (props) => {
         }
         axiosInstance.post("getnotes-data/",values)
         .then((res)=>{
-            console.log(res.data);
             setNotes(res.data)
         })
     },[])
@@ -54,7 +53,6 @@ const EditNotesModal = (props) => {
         }
         axiosInstance.post("edit-notes/",values)
         .then((res)=>{
-            console.log(res.data);
             props.setRender((prev)=> !prev)
         })
         handleClose()

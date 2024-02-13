@@ -34,7 +34,6 @@ const CourseStruct = () => {
 
   useEffect(() => {
     axiosInstance.get(`course-struct/${id}`).then((res) => {
-      console.log(res.data, 'course struct data ahn');
       setAllValues(res.data);
       setValues(res.data.slice(0, perPage));
     });
@@ -55,37 +54,30 @@ const CourseStruct = () => {
   };
 
   const handleTitleChange = (e) => {
-    console.log(e.target.value, '?????');
     setEditCourseStruct({ ...editcourseStruct, title: e.target.value });
     dispatch(changeTitle(e.target.value));
   };
   const handleDurationChange = (e) => {
-    console.log(e.target.value, '?????');
     setEditCourseStruct({ ...editcourseStruct, duration: e.target.value });
     dispatch(changeDuration(e.target.value));
   };
   const handlePriceChange = (e) => {
-    console.log(e.target.value, '?????');
     setEditCourseStruct({ ...editcourseStruct, price: e.target.value });
     dispatch(changePrice(e.target.value));
   };
   const handleDescChange = (e) => {
-    console.log(e.target.value, '?????');
     setEditCourseStruct({ ...editcourseStruct, description: e.target.value });
     dispatch(changeDescription(e.target.value));
   };
   const handleClassesChange = (e) => {
-    console.log(e.target.value, '?????');
     setEditCourseStruct({ ...editcourseStruct, num_of_classes: e.target.value });
     dispatch(changeNumofClasses(e.target.value));
   };
   const handleLevelsChange = (e) => {
-    console.log(e.target.value, '?????');
     setEditCourseStruct({ ...editcourseStruct, levels: e.target.value });
     dispatch(changeLevels(e.target.value));
   };
   const handlePriceperChange = (e) => {
-    console.log(e.target.value, '?????');
     setEditCourseStruct({ ...editcourseStruct, price_per: e.target.value });
     dispatch(changePriceper(e.target.value));
   };
@@ -102,16 +94,13 @@ const CourseStruct = () => {
       price_per: editcourseStruct.price_per,
     };
 
-    console.log(coursevalues);
 
     axiosInstance.post('course-structedit/', coursevalues).then((res) => {
-      console.log(res.data);
 
       const updatedData = res.data;
 
       const updatedValues = values.map((value) => {
         if (value.id === updatedData.id) {
-          console.log(value, '?/');
           return {
             ...value,
             title: updatedData.title,

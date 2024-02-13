@@ -33,13 +33,11 @@ const TutorSignup = () => {
         "resume": fileInput,
       }
 
-    console.log(selectedCourses,"course here");
 
     const handleSignUp = (e)=>{
       e.preventDefault();
 
         axiosInstance.post("signup/",values).then((res)=>{
-          console.log(res.data,"signupppppp data",res.data.data.id);
           // setFileId(res.data.data.id)
           handleFileSubmit(res.data.data.id);
           if(res.data.message==="success"){
@@ -63,8 +61,7 @@ const TutorSignup = () => {
                   resource_type: 'auto',
               },
           });
-          console.log(response.data,"###########");
-          console.log('resume uploaded:',  response.data.url);
+        
           setFileInput(null);
 
       } catch (error) {
@@ -75,7 +72,6 @@ const TutorSignup = () => {
     useEffect(()=>{
       axiosInstance.get("courses/")
       .then((res)=>{
-        console.log(res.data,"course-data?????????");
         setCdata(res.data)
       })
     },[])

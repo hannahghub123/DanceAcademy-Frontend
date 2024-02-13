@@ -18,7 +18,6 @@ const DetailsCard = () => {
     useEffect(()=>{
         axiosInstance.get(`tdetails/${id}`)
         .then((res)=>{
-            console.log(res.data,"hi t data")
             setDetails(res.data)
         })
     },[]) 

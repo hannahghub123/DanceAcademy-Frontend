@@ -31,7 +31,6 @@ const TutorLogin = () => {
       e.preventDefault();
 
         axiosInstance.post("login/",data).then((res)=>{
-          console.log(res.data,"{{{{{{{{");
           const tutorId = res.data.id
             const tokenobjs = {
 
@@ -40,8 +39,6 @@ const TutorLogin = () => {
                 message : res.data.message
 
             };
-
-            console.log(tokenobjs,"Ivde varunund");
 
             localStorage.setItem("accessToken-T",JSON.stringify(res.data.access));
             localStorage.setItem("tutorDetails",JSON.stringify(res.data.data));

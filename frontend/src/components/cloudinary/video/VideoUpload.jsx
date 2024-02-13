@@ -18,7 +18,6 @@ const VideoUpload = (props) => {
     }
 
     const handleVideoSubmit = async(e)=>{
-        console.log("video uploading..");
         e.preventDefault();
 
         const formData = new FormData();
@@ -35,8 +34,7 @@ const VideoUpload = (props) => {
                     resource_type: 'video',
                 },
             });
-            console.log(response.data,"###########");
-            console.log('Video uploaded:',  response.data.url);
+          
             setVideoInput(null);
             setDesc(null);
             toast.dismiss(toastid)

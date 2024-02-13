@@ -13,13 +13,11 @@ const ImgUpload = () => {
     }
 
     const handleSubmitFile = async(e)=>{
-        console.log("submitting...");
         e.preventDefault();
 
     const formData = new FormData();
     formData.append('image',image)
     formData.append('id',id)
-    console.log(formData,"Formdataaa");
     try{
         await axios.post('http://localhost:8000/tutor/image-set/',formData,{
             headers:{

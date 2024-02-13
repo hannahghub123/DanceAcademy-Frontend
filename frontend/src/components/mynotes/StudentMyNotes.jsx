@@ -38,7 +38,6 @@ const StudentMyNotes = () => {
         }
         axiosInstance.post("notes-data/",values)
         .then((res)=>{
-            console.log(res.data);
             setNotes(res.data)
         })
     },[render])
@@ -79,7 +78,6 @@ const StudentMyNotes = () => {
       }
       axiosInstance.post("delete-notes/",values)
       .then((res)=>{
-        console.log(res.data);
         setRender(!render)
 
         toast.success("Note Deleted !!", {

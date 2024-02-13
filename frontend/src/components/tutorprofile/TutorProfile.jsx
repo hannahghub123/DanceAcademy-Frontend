@@ -10,8 +10,6 @@ const TutorProfile = () => {
 
     const {id} = useParams();
  
-    console.log("hannah id - ",id);
-
     const [data,setData] = useState(
       {
         id:id,
@@ -34,17 +32,13 @@ const TutorProfile = () => {
 
         setData({...data,id:parseData.id,username:parseData.username, name:parseData.name, email:parseData.email, phone:parseData.phone, expertise:parseData.expertise, qualification:parseData.qualification, password:parseData.password, image:parseData.image});
 
-        console.log("Parsedataa",parseData)
       }
 
     },[])
 
-   console.log(data,"dataaa");
-
   return (   
     
     
-
     <>
 
         <Back title='Your Profile'/>

@@ -37,14 +37,12 @@ const TutorDashboard = () => {
   
         axiosInstance.post("video-lists/",values)
         .then((res)=>{
-          console.log(res.data);
           setMyuploads(res.data.video_urls) 
           setUploadCount(res.data.uploadCount)
         })
 
         axiosInstance.post("pay-details/",values)
         .then((res)=>{
-            console.log(res.data.paydata);
             setPayDetails(res.data.paydata);
             setTotalCount(res.data.totalCount)
         })

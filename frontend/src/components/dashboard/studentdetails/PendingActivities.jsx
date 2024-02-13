@@ -33,7 +33,6 @@ const PendingActivities = () => {
             }
             axiosInstance.post("task-details/",values)
             .then((res)=>{
-                console.log(res.data.pendingTasks);
                 setNotes(res.data.pendingTasks)
             })
         }

@@ -8,15 +8,13 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 const NavComponent = () => {
   const {id} = useParams()
-  console.log("nav component id - ",id)
   const [accessT, setAccessT] = useState(null);
   const [accessS, setAccessS] = useState(null);
   useEffect(() => {
     
     const accT = localStorage.getItem("accessToken-T");
     const accS = localStorage.getItem("accessToken-S");
-    console.log("accT",accT)
-    console.log("accS",accS)
+
     setAccessT(accT);
     setAccessS(accS);
 }, []);

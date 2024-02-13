@@ -23,7 +23,7 @@ const DashboardData = () => {
     useEffect(()=>{
         axiosInstance.post("count/")
         .then((res)=>{
-            console.log(res.data);
+            
             setstudentsCount(res.data.stdCount)
             setTutorsCount(res.data.tutorCount)
             setCoursesCount(res.data.courseCount)

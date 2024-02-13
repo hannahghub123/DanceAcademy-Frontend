@@ -13,8 +13,6 @@ const Head = () => {
     
     const accT = localStorage.getItem("accessToken-T");
     const accS = localStorage.getItem("accessToken-S");
-    console.log("head accT",accT)
-    console.log("head accS",accS)
    
 }, []);
 

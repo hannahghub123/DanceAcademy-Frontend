@@ -51,13 +51,12 @@ const TutorCard = () => {
       )
     useEffect((data)=>{
         const tutorDetails = localStorage.getItem("tutorDetails");
-        console.log(tutorDetails,"tutorDetailssssssss");
+
         if (tutorDetails) {
           const parseData = JSON.parse(tutorDetails);
   
           setData({...data,id:parseData.id,username:parseData.username,course:parseData.course, name:parseData.name, email:parseData.email, phone:parseData.phone, expertise:parseData.expertise, qualification:parseData.qualification, password:parseData.password, image:parseData.image});
   
-          console.log("Parsedata",parseData)
         }
   
       },[])
@@ -65,41 +64,34 @@ const TutorCard = () => {
       const handleUsernameChange = (e) => {
         setData({ ...data, username: e.target.value });
         dispatch(changeUsername(e.target.value));
-        console.log(data.username,"edited username",user.value.username);
       };
   
       const handleNameChange = (e) => {
         setData({ ...data, name: e.target.value });
         dispatch(changeName(e.target.value));
-        console.log(data.name,"edited name");
       };
   
       const handleExpertiseChange = (e) => {
         setData({ ...data, expertise: e.target.value });
         dispatch(changeExpertise(e.target.value));
-        console.log(data.expertise,"edited exp");
       };
   
       const handleEmailChange = (e) => {
         setData({ ...data, email: e.target.value });
         dispatch(changeEmail(e.target.value));
-        console.log(data.email,"edited email");
       };
   
       const handleQualificationeChange = (e) => {
         setData({ ...data, qualification: e.target.value });
         dispatch(changeQualification(e.target.value));
-        console.log(data.qualification,"edited qualification");
       };
       const handlePhoneChange = (e) => {
         setData({ ...data, phone: e.target.value });
         dispatch(changePhone(e.target.value));
-        console.log(data.phone,"edited phone");
       };
       const handlePasswordChange = (e) => {
         setData({ ...data, password: e.target.value });
         dispatch(changePassword(e.target.value));
-        console.log(data.password,"edited password");
       };
   
   
@@ -115,25 +107,19 @@ const TutorCard = () => {
       setImage(e.target.files[0]);
     }
 
-    console.log(image,"set imageee");
-
     
     const handleSubmit = ()=>{
         
         axiosInstance.post("tprofedit/",data).then((res)=>{
-          console.log(res.data," hi res.data ahn ith",res.data.name);
           localStorage.setItem("tutorDetails",JSON.stringify(res.data))
-          console.log(res.data.image,"imggggg");        
           setData({...data,id:res.data.id,username:res.data.username,course:res.data.course, name:res.data.name, email:res.data.email, phone:res.data.phone, expertise:res.data.expertise, qualification:res.data.qualification, password:res.data.password});
 
           if (image){
             const handleSubmitFile = async(e)=>{
-              console.log("submitting...");
       
               const formData = new FormData();
               formData.append('image',image)
               formData.append('id',id)
-              console.log(formData,"Formdataaa");
               try{
                   await axios.post('http://localhost:8000/tutor/image-set/',formData,{
                       headers:{

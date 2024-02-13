@@ -12,7 +12,6 @@ const Hero = () => {
   }
 
   const courseHandle=()=>{
-    console.log("hi");
     navigate('../courses')
   }
 

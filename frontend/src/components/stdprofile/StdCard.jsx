@@ -50,7 +50,6 @@ const StdCard = () => {
 
     if (stdDetails) {
       const parseData = JSON.parse(stdDetails);
-      console.log("Parsedata",parseData)
 
       setData(parseData); 
 
@@ -87,22 +86,15 @@ const StdCard = () => {
          image:data.image
     }
 
-    console.log(datas,"ji");
-
     axiosInstance.post("std-edit/",datas).then((res)=>{
-      console.log(res.data," hi res.data ahn ith");
       localStorage.setItem("stdDetails",JSON.stringify(res.data.data))
-      console.log(res.data.data.image,"imggggg",image);        
       setData({...data,id:res.data.data.id,username:res.data.data.username,course: res.data.course ,name:res.data.data.name, email:res.data.data.email, phone:res.data.data.phone, password:res.data.data.password});
 
       if (image){
-        const handleSubmitFile = async(e)=>{
-          console.log("submitting...");
-  
+        const handleSubmitFile = async(e)=>{  
           const formData = new FormData();
           formData.append('image',image)
           formData.append('id',id)
-          console.log(formData,"Formdataaa");
           try{
               await axios.post('http://localhost:8000/std/image-set/',formData,{
                   headers:{
@@ -111,7 +103,6 @@ const StdCard = () => {
               })
               .then((res)=>{
                 localStorage.setItem("stdDetails",JSON.stringify(res.data.data))
-                console.log(res.data,"??????????");
                 setData({...data,image:res.data.data.image})
               })
               setImage(null);
@@ -136,37 +127,31 @@ const StdCard = () => {
 const handleUsernameChange = (e) => {
   setData({ ...data, username: e.target.value });
   dispatch(changeUsername(e.target.value));
-  console.log(data.username,"edited username",user.value.username);
 };
 
 const handleNameChange = (e) => {
   setData({ ...data, name: e.target.value });
   dispatch(changeName(e.target.value));
-  console.log(data.name,"edited name");
 };
 
 const handleEmailChange = (e) => {
   setData({ ...data, email: e.target.value });
   dispatch(changeEmail(e.target.value));
-  console.log(data.email,"edited email");
 };
 
 const handlePhoneChange = (e) => {
   setData({ ...data, phone: e.target.value });
   dispatch(changePhone(e.target.value));
-  console.log(data.phone,"edited phone");
 };
+
 const handlePasswordChange = (e) => {
   setData({ ...data, password: e.target.value });
   dispatch(changePassword(e.target.value));
-  console.log(data.password,"edited password");
 };
 
 const taskHandle=()=>{
   setTask(!task)
 }
-
-console.log(data,"99999");
 
   return (
     <>

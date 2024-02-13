@@ -4,10 +4,6 @@ import Button from '@mui/joy/Button';
 import Modal from '@mui/joy/Modal';
 import ModalDialog from '@mui/joy/ModalDialog';
 import Typography from '@mui/joy/Typography';
-import ListItemDecorator from '@mui/joy/ListItemDecorator';
-import Select from '@mui/joy/Select';
-import Option from '@mui/joy/Option';
-import Avatar from '@mui/joy/Avatar';
 import axiosInstance from '../../axios/tutoraxios';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -21,12 +17,9 @@ const CourseModal = (props) => {
     const {id} = useParams()
     const navigate = useNavigate()
 
-    console.log("idddddd ahneeee",props.id);
-
     useEffect(()=>{
         axiosInstance.get(`tdetails/${id}`)
         .then((res)=>{
-            console.log(res.data,"tutor modalll");
             setTdata(res.data)
         }).catch(()=>{
             alert("error")
@@ -38,7 +31,6 @@ const CourseModal = (props) => {
 
         axiosInstance.post("course-struct/",datas)
         .then((res)=>{
-            console.log(res.data,"struct");
             setStructdata(res.data)
         })
     },[])
@@ -86,9 +78,7 @@ const CourseModal = (props) => {
               };
 
               const stdData = localStorage.getItem("stdDetails");
-              console.log("haiis", stdData,paymentData,"??????///////");
               const parsedData = JSON.parse(stdData);
-              console.log("haiim", parsedData.id);
 
               const datas = {
                 studentId : parsedData.id,
@@ -103,9 +93,7 @@ const CourseModal = (props) => {
                   
                   if (res.data.message === "Course Unavailable") {
                     alert("You cannot purchase this course");
-                    console.log("already");
                   } else {
-                    console.log(res.data);
                     alert("Payment Successful")
                     navigate(`../std-profile/${parsedData.id}`);
                   }
@@ -125,7 +113,6 @@ const CourseModal = (props) => {
           paymentObj.open();
         } else {
           navigate(`../opt-login`);
-        console.log("errrr");
         }
       };
 
@@ -197,7 +184,6 @@ const CourseModal = (props) => {
       ))}
     </select>
 
-    {  console.log(selectedTutor,"hey tutor selected")}
           <Box
             sx={{
               mt: 1,

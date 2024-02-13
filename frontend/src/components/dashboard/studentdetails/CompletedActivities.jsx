@@ -32,7 +32,6 @@ const CompletedActivities = () => {
             }
             axiosInstance.post("task-details/",values)
             .then((res)=>{
-                console.log(res.data.completed_tasks);
                 setNotes(res.data.completed_tasks)
             })
         }

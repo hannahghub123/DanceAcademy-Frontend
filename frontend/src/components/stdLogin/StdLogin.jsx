@@ -28,10 +28,7 @@ const StdLogin = () => {
 
     const handleLogin = (e)=>{
       e.preventDefault();
-      console.log(values,"values here");
         axiosInstance.post("stdlogin/",values).then((res)=>{
-          console.log("ivdem ethy njn");
-          console.log(res.data);
 
             const tokenobjs = {
 
@@ -41,7 +38,6 @@ const StdLogin = () => {
 
             };
 
-            console.log(tokenobjs);
 
           if (res.data.message === "success"){
             navigate('../std-dashboard/')

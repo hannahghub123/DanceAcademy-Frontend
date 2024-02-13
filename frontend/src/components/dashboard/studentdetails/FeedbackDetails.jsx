@@ -33,7 +33,6 @@ const FeedbackDetails = () => {
 
             axiosInstance.post("feed-details/",values)
             .then((res)=>{
-                console.log(res.data,"hey");
                 setTutorDetails(res.data.tutors)
                 setFeedDetails(res.data.feedbacks)
 

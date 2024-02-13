@@ -38,7 +38,6 @@ const TutorsComponent = () => {
       id: id,
     };
     axiosInstance.post('status-edit/', values).then((res) => {
-      console.log(res.data);
       setApproveStatus(!approveStatus);
 
       if (res.data.message === 'restricted') {

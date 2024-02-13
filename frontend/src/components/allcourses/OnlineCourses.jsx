@@ -14,7 +14,6 @@ const OnlineCourses = () => {
     useEffect(()=>{
         axiosInstance.get('courses/')
         .then((res)=>{
-            console.log(res.data,"hi courses data")
             setCourses(res.data)
         })
     },[]) 

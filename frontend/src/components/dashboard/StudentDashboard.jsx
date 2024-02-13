@@ -40,13 +40,11 @@ const StudentDashboard = () => {
 
       axiosInstance.post("courseStruct-details/",values)
       .then((res)=>{
-        console.log(res.data);
         setCourseDetails(res.data) 
       })
 
       axiosInstance.post("task-details/",values)
       .then((res)=>{
-        console.log(res.data);
         setTaskCount(res.data.taskCount)
         setActivityDetails(res.data.completed_tasks)
         setCompletedCount(res.data.completedCount)
@@ -58,14 +56,12 @@ const StudentDashboard = () => {
       
       axiosInstance.post("feed-details/",values)
       .then((res)=>{
-        console.log(res.data,"PPPPPPP");
         setFeedbackDetails(res.data.tutors)
       })
 
       axiosInstance.post("my-uploads/",values)
       .then((res)=>{
           setUploadsDetails(res.data.task_urls)
-        console.log(res.data.task_urls,"888");
       })
     }
   },[])

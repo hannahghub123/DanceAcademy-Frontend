@@ -22,7 +22,6 @@ const CoursesPurchased = () => {
 
             axiosInstance.post("coursepay-details/",values)
             .then((res)=>{
-                console.log(res.data);
                 setCourses(res.data.paydata)
                 setTotalAmount(res.data.totalAmount)
             })

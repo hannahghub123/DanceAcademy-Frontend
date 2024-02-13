@@ -21,14 +21,10 @@ const CourseDetails = () => {
 
         axiosInstance.get(`course-details/${id}`)
         .then((res)=>{
-            console.log(res.data,"hi courses-details data")
             setData(res.data)
         })
     },[]) 
 
-    console.log(data,"heyyyy");
-  
-    console.log(acc,"accvvvhhhkjkl");
 
   return (
     <>

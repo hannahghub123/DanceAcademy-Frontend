@@ -12,10 +12,8 @@ const RelatedVideos = (props) => {
         const datas ={
             id:props.id
         }
-        console.log(datas,"$$$$$$$$$$$");
         axios.post("http://localhost:8000/std/video-lists/",datas)
         .then((res)=>{
-            console.log(res.data,"related videoss #######");
             setVideos(res.data.video_urls)
         })
         .catch((error)=>{

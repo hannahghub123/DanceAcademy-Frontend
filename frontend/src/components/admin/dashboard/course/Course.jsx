@@ -22,7 +22,6 @@ const Course = () => {
     navigate(`../admin/course-struct/${id}`);
   };
 
-  console.log(coursedata, 'hiii');
 
   const [allValues, setAllValues] = useState([]);
   const [values, setValues] = useState([]);
@@ -36,7 +35,6 @@ const Course = () => {
 
   useEffect(() => {
     axiosInstance.get('courses/').then((res) => {
-      console.log(res.data, 'course data ahn ithu');
       setAllValues(res.data);
       setValues(res.data.slice(0, perPage));
     });
@@ -83,32 +81,29 @@ const Course = () => {
       status: editcourse.status
     };
 
-    console.log(coursedatas, 'ji');
 
     axiosInstance.post('admincourse-edit/', coursedatas).then((res) => {
-      console.log(res.data, ' hi res.data heyy ahn ith');
 
       if (image) {
         const handleSubmitFile = async (e) => {
-          console.log('submitting...');
-
+         
           const formData = new FormData();
           formData.append('image', image);
           formData.append('id', editcourse.id);
-          console.log(formData, 'Formdataaa');
+     
           try {
             await axios.post('http://localhost:8000/tutor/courseImage-set/', formData, {
               headers: {
                 'Content-Type': 'multipart/form-data',
               },
             }).then((res) => {
-              console.log(res.data, '??????????');
+            
 
               const updatedData = res.data.data;
 
               const updatedValues = values.map((value) => {
                 if (value.id === updatedData.id) {
-                  console.log(value, '?heee');
+                
                   return {
                     ...value,
                     image: updatedData.image,
@@ -132,7 +127,7 @@ const Course = () => {
 
       const updatedValues = values.map((value) => {
         if (value.id === updatedData.id) {
-          console.log(value, '?/');
+       
           return {
             ...value,
             title: updatedData.title,
@@ -178,7 +173,7 @@ const Course = () => {
     }
     axiosInstance.post('add-course/',values)
     .then((res)=>{
-      console.log(res.data);
+   
       if(res.data.message === "success"){
         setAddcourseDetails(!addcourseDetails)
         toast.success(" New Course Added!", {

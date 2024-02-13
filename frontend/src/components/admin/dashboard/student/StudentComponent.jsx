@@ -39,7 +39,6 @@ const StudentComponent = () => {
       id: id,
     };
     axiosInstance.post('status-block/', datas).then((res) => {
-      console.log(res.data, 'block handle?');
       setStatusUpdate(!statusUpdate);
 
       toast.success('User Blocked!', {
@@ -53,7 +52,6 @@ const StudentComponent = () => {
       id: id,
     };
     axiosInstance.post('status-unblock/', datas).then((res) => {
-      console.log(res.data, 'unblocked handle?');
       setStatusUpdate(!statusUpdate);
 
       toast.success('User Unblocked!', {

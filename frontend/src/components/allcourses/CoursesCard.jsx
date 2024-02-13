@@ -26,23 +26,15 @@ const CoursesCard = () => {
         }
         axiosInstance.post("course-structure/",datas)
         .then((res)=>{
-            console.log(res.data,"hi hey you");
             setCdata(res.data)
         })
     },[])
-
-
-  
-    console.log(acc,"accvvvhhhkjkl");
-
-
-      
+     
 
   return (
     <>
         <section className='coursesCard'>
             <div className="container grid2">
-              {console.log(cdata,"cdata")}
                 {cdata.map((val)=>{
                    return (
                    <div className="items">
